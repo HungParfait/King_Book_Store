@@ -1,0 +1,45 @@
+{
+  "name": "fahasa-book",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "start-react": "react-scripts start",
+    "watch": "node-sass src/resources/scss/ -o src/public/css/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "duchung",
+    "book-backend"
+  ],
+  "author": "duchung",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "google-auth-library": "^7.1.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.9",
+    "mongoose-slug-generator": "^1.0.4",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "multiparty": "^4.2.2",
+    "passport": "^0.4.1",
+    "passport-oauth": "^1.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3",
+    "validation": "^0.0.1"
+  },
+  "devDependencies": {
+    "node-sass": "^6.0.0"
+  }
+}
