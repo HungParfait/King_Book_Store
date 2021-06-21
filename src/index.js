@@ -3,14 +3,13 @@ const path = require('path');
 const morgan = require('morgan')
 const exphbs = require('express-handlebars')
 const app = express()
-const port = 3000
+const port = process.env.port || 3000
 const db = require('./config/db')
 const route = require('./routes/index.js');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const check = require('./app/Middleware/checkCookie')
-//connect to db
 
 db.connect();
 app.use(morgan('combined'))
