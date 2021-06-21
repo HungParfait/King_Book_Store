@@ -1,5 +1,6 @@
 const User = require('../models/users');
 const jwt = require("jsonwebtoken")
+const Cart =  require('../models/cart');
 
 module.exports.check = async function (req, res, next) {
     try {
@@ -42,8 +43,11 @@ module.exports.checkDisplay = async function (req, res, next) {
                 decodedData = jwt.verify(token, 'duchung-email');
                 if (decodedData) {
                     const user = await User.findById(decodedData?._id);
+                    const cart = await Cart.findOne({userId: decodedData?._id});
                     res.locals.logedIn = true;
+                    res.locals.number = cart?.products?.length;
                     if (user) {
+                        await User.findById(decodedData?._id);
                         if(user.user_name) {
                             res.locals.username = user.user_name;
                         }

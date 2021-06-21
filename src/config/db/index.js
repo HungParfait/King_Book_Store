@@ -9,9 +9,8 @@ async function connect() {
             useFindAndModify: false,
             useCreateIndex: true
         });
-        console.log('connect successfully');
     } catch (error) {
-        console.log('connect fail');
+        console.log(error);
     }
 }
 

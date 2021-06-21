@@ -1,0 +1,58 @@
+<div id="err" class="position-fixed" style="top: 100px; right: 20px;">
+    {{#each error}}
+    <div class="p-3 mb-2 bg-warning text-dark">
+        {{this}}
+    </div>
+    {{/each}}
+</div>
+<div id="validateErr">
+
+</div>
+<div id="form" class="row justify-content-center">
+    <div class="px-4 col-10 bg-white px-5 mt-3 py-4">
+
+        <div class="xl:w-3/4 mb-4">
+            <h4 class="text-warning">Log In</h4>
+            <p class="text-xl mb-2">Please submit your information.</p>
+        </div>
+
+        <div class="contact-form">
+            <form action="/login/email" method="post">
+                <div class=" row justify-content-center" style="font-size: 14px;">
+                    <div class="form-group col-7 justify-content-center row">
+                        <label for="exampleInputEmail-1" class="col-8">Email</label>
+                        <input type="email" class="form-control col-8" id="exampleInputEmail-1" name="email">
+                    </div>
+                    <div class="form-group col-7 justify-content-center row">
+                        <label for="exampleInputPassword-1" class="col-8">Password</label>
+                        <input type="password" class="form-control col-8" id="exampleInputPassword-1" name="password">
+                    </div>
+
+                    <p class="text-center">
+                        <a href="#" class="">Quên mật khẩu?</a>
+                    </p>
+
+                    <div class="col-8">
+                        <div class="col-auto px-0 w-100">
+                            <button type="submit" class="xem-them-2" style="font-size: 14px;">Đăng nhập</button>
+                        </div>
+                    </div>
+
+                    <div class="mx-5 col-7">
+                        <div class="col-auto px-0 w-100 text-center">
+                            <button type="button" class="btn btn-primary mb-3 ">
+                                Sign up with Facebook
+                                <i class="fab fa-facebook-square" style="margin-left: 5px;"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="my-signin2" class='col-7'></div>
+                    <p class="text-center">
+                        <a href="../signup" class="">Đăng ký</a> nếu chưa bạn chưa có tài khoản
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

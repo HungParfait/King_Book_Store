@@ -1,0 +1,194 @@
+<link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.0.7/css/star-rating.css" media="all"
+    rel="stylesheet" type="text/css" />
+
+<link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.0.7/themes/krajee-fas/theme.css" media="all"
+    rel="stylesheet" type="text/css" />
+
+<div id="noti-rating" class="bg-warning text-secondary d-none position-fixed text-center p-2 rounded transparent"
+    style="top: 80px; right: 5px; z-index: 20;">
+    Đánh giá của bạn rất hữu ích!
+</div>
+
+<div id="noti-error" class="bg-warning text-secondary d-none position-fixed text-center p-2 rounded transparent"
+    style="top: 80px; right: 5px; z-index: 20;">
+    Lỗi
+</div>
+
+<div class="col-lg-8 col-xs-12 mt-3 mx-0 bg-white">
+    <div class="fw-bolder row py-3">
+        <div class="text-center col-sm-6 col">Sản Phẩm</div>
+        <div class="text-center col">Số Lượng</div>
+        <div class="text-center col">Thành tiền</div>
+        <div class="text-center col">Đánh giá</div>
+    </div>
+</div>
+
+
+{{#each orders}}
+<div class="thanh-toan row mt-3 mx-0 px-0">
+    <div class="col-lg-8 col-xs-12 mt-xs-3 bg-white rounded">
+        <table class="table">
+            <tbody>
+                {{#each this.products }}
+                <tr id="tr-{{this.id}}">
+                    <td>
+                        <div id="ten-hang" class="">
+                            <a href="/books/{{this.id}}" class="row px-0">
+                                <img src="{{this.image}}" class="mem-img-3 col-sm-4 col-10">
+                                <p class="col-sm-8 col-12 fst-italic mem-text mx-0" style="color: red; font-weight: 700;">
+                                    {{this.name}} -
+                                    {{this.author}}
+                                </p>
+                            </a>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class=" mx-sm-5 mx-0">
+                            <div class="" id="quantity-number-{{@index}}">
+                                <span id="display-quantity-{{this.id}}"
+                                    class="border border-secondary rounded py-2 px-2">{{this.quantity}}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="thanh-tien" class="text-center mx-4">
+                            <div class="text-center" style="width: 70px;">
+                                <span class="fw-bolder d-block" id="price-{{this.id}}">{{this.price}}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center" style="width: 80px">
+                            <span id="{{this.id}}" onclick="ratingFunction('{{this.id}}')"
+                                class="text-secondary text-decoration-underline fw-bolder mx-2 doi-mau">
+                                Đánh giá
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="rating-form-{{this.id}}" class="hien-thi">
+                            <div class="bg-white m-auto px-3 py-5" style="border-radius: 10px;" id='rating-form-child-{{this.id}}'>
+                                <p class="fst-italic fs-5 mx-5" style="color: red; font-weight: 700;">
+                                    {{this.name}} - {{this.author}}
+                                </p>
+                                <form id="rating-{{this.id}}"
+                                    onsubmit="ratingSend(event,'{{this.id}}')">
+                                    <div class="mx-5">
+                                        <label for="rating-star" class="fw-bolder text-secondary">Đánh giá: </label>
+                                        <input type="text" class="star col-12 my-2" value="" name="star">
+                                    </div>
+
+                                    <div class="mx-5">
+                                        <label for="comment" class="fw-bolder text-secondary">Nhận xét:</label>
+                                        <textarea type="text" class="form-control" name="comment" rows="5"></textarea>
+                                    </div>
+
+                                    <button type="submit" class="xem-them w-50">ĐÁNH
+                                        GIÁ</button>
+
+                                    <button type="button" class="bo-qua w-50"
+                                        onclick="cancelRatingFunc('{{this.id}}')">Bỏ qua</button>
+                                </form>
+                            </div>
+
+                            <div class="w-100 h-100 position-absolute">
+                                <div class="center d-none position-absolute top-50 start-50"
+                                    id="noti-spinner-{{this.id}}">
+                                    <h1>Loading</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {{else}}
+                <tr>
+                    <p class="text-center fst-italic mt-4">Giỏ hàng trống</p>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-lg-4 col-xs-8 ">
+        <div id="shipping-address" class="rounded rounded-5 bg-white">
+            <div class=" bg-warning mx-0 p-2">
+                <p class=" fw-bold text-primary"><i class="fas fa-tags"></i> Thông tin đơn hàng</p>
+            </div>
+            <div class="text-center py-3">
+                <ul>
+                    <li class="text-secondary fw-bolder">{{this.time}}</li>
+                </ul>
+            </div>
+            <div class="row p-2 mx-0">
+                <p class="col-6 fw-bold">Tổng số tiền (VAT)</p>
+                <div class="col-6 text-center fw-bold text-warning" id="">{{this.money}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{{else}}
+<p class="text-center fst-italic mt-4 text-success py-5 fs-5">Bạn chưa mua hàng</p>
+{{/each}}
+
+<script>
+    function cancelRatingFunc(id) {
+        document.getElementById(`rating-form-${id}`).style.display = 'none';
+    }
+
+    function ratingFunction(id) {
+        document.getElementById(`rating-form-${id}`).style.display = 'block';
+    }
+
+    async function ratingSend(event, id) {
+        event.preventDefault();
+        let element = document.getElementById(`rating-${id}`)
+        let formData = new FormData(element)
+        formData.append('id', id);
+        let spinner = document.querySelector(`#noti-spinner-${id}`);
+        spinner.classList.remove('d-none');
+        spinner.classList.add('d-block');
+
+        let response = await axios({
+            method: 'POST',
+            url: '/order',
+            data: formData,
+        });
+
+        if (response.request.status !== 200) {
+            cancelRatingFunc(id);
+            let quantity = document.querySelector(`#noti-error`);
+            quantity.classList.remove('d-none');
+            quantity.classList.add('d-block');
+            setTimeout(() => {
+                quantity.classList.remove('d-block');
+                quantity.classList.add('d-none');
+            }, 3000)
+        }
+        else {
+        cancelRatingFunc(id);
+        let quantity = document.querySelector(`#noti-rating`);
+        quantity.classList.remove('d-none');
+        quantity.classList.add('d-block');
+        setTimeout(() => {
+            quantity.classList.remove('d-block');
+            quantity.classList.add('d-none');
+        }, 3000)
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.star').rating({
+            hoverOnClear: false,
+            theme: 'krajee-fas',
+            min: 0,
+            max: 5,
+            step: 1,
+            size: 'sm',
+            hoverChangeStars: false,
+            filledStar: '<i class="fas fa-star fa-2x text-warning"></i>',
+            emptyStar: '<i class="fas fa-star fa-2x"></i>',
+        });
+    });
+</script>

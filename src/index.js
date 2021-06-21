@@ -10,6 +10,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const check = require('./app/Middleware/checkCookie')
+//connect to db
 
 db.connect();
 app.use(morgan('combined'))
@@ -27,19 +28,16 @@ app.use('/category',express.static(path.join(__dirname,'public')))
 app.use('/checkout',express.static(path.join(__dirname,'public')))
 app.use('/books',express.static(path.join(__dirname,'public')))
 
-
 app.engine('hbs', exphbs( {
   extname: 'hbs',
-
 }));
+
 app.use(check.checkDisplay);
 app.set('view engine', 'hbs');
 
-app.set('views', path.join(__dirname, 'resources/views'))
+app.set('views', path.join(__dirname, 'views'))
 
 route(app);
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+app.listen(port)
 

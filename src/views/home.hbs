@@ -1,0 +1,146 @@
+<div id="top-row" class="row mt-3">
+    <div id="top-row-left" class=" col-12 col-sm-3">
+        <div class="d-none d-sm-block px-0 bg-white">
+            <div id="tag-1">
+                <p class="font-weight-bold text-white text-center chinh-p">
+                    Danh mục sản phẩm
+                </p>
+            </div>
+
+            <div class="top-left-scroll">
+                {{#each book}}
+                <div class="">
+                    <a href="/category/{{this}}" class="tag-left">
+                        <p class="my-0">{{this}}</p>
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+            <div class="fs-6 text-secondary justify-content-around row py-1 my-2 color-change-father mx-0">
+                <i class="fas fa-angle-double-down col-3 text-center color-change"></i>
+                <i class="fas fa-angle-double-down col-3 text-center color-change"></i>
+                <i class="fas fa-angle-double-down col-3 text-center color-change"></i>
+            </div>
+        </div>
+    </div>
+
+
+    <!--
+    <div id="top-row-right" class="position-relative">
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" class="img-fluid">
+            <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+        </video>
+        <div id="caption" class="text-white position-absolute fs-3 top-50 end-50 fst-italic w-100 h-100 text-center">
+            
+        </div>
+    </div>
+    -->
+
+    <div class="col-12 col-sm-6 px-4">
+        <div id="carouselExampleIndicators" class="carousel" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active ">
+                    <div class="w-100 h-100 position-relative rounded">
+                        <img src="https://demo.hasthemes.com/fastbuy-preview/fastbuy/assets/images/slider/3_2.jpg"
+                            class="img-fluid">
+                        <div class="order-last position-absolute show-info-bottom"
+                            style="transform: translateY(50%); left: 15%">
+                            <p class="fw-bold text-white fs-1 position-relative show-info-right">
+                                Big Sale
+                            </p>
+                            <p class="fw-bolder text-white fs-3 position-relative show-info-left">
+                                Up to 50%
+                            </p>
+                            <button class="btn bg-white doi-mau-1" type="button">
+                                Shop Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="w-100 h-100 position-relative rounded">
+                        <img src="https://demo.hasthemes.com/fastbuy-preview/fastbuy/assets/images/slider/3_1.jpg"
+                            class="img-fluid">
+                        <div class="order-last position-absolute middle show-info-top"
+                            style="transform: translateY(-50%); left: 10%">
+                            <p class="fw-bold text-white fs-1 position-relative show-info-left">
+                                Flash Sale 30%
+                            </p>
+                            <p class="fw-bolder text-white fs-3 position-relative show-info-right">
+                                Apply all books
+                            </p>
+                            <button class="btn bg-white doi-mau-1" type="button">
+                                Shop Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-2 d-flex justify-content-center">
+                <a class="doi-mau fs-6 d-flex flex-column me-3" type="button"
+                    data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="far fa-arrow-alt-circle-left fs-4" aria-hidden="true"></span>
+                    <span class="visually">Prev</span>
+                </a>
+                <a class="doi-mau fs-6 d-flex flex-column" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="far fa-arrow-alt-circle-right fs-4" aria-hidden="true"></span>
+                    <span class="visually">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 d-flex d-sm-block flex-row mx-0">
+        <div class="container-image mt-2 mt-sm-0 mx-1 mx-sm-0">
+            <img class="img-fluid"
+                src="https://demo.hasthemes.com/fastbuy-preview/fastbuy/assets/images/banner/3_1.jpg">
+            <div class="overlay">
+                <div class="text-zoom"></div>
+            </div>
+        </div>
+        <div class="mt-2 container-image mx-1 mx-sm-0">
+            <img class="img-fluid"
+                src="https://demo.hasthemes.com/fastbuy-preview/fastbuy/assets/images/banner/3_3.jpg">
+            <div class="overlay">
+                <div class="text-zoom"></div>
+            </div>
+        </div>
+        <div class="mt-2 container-image mx-1 mx-sm-0">
+            <img class="img-fluid"
+                src="https://demo.hasthemes.com/fastbuy-preview/fastbuy/assets/images/banner/3_2.jpg">
+            <div class="overlay">
+                <div class="text-zoom"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="ben-le">
+    <div id="da-xem" style="right: 0px;">
+        <p class="" style="writing-mode: vertical-rl">
+            <span><i class="far fa-clock"></i></span>
+            Sản phẩm đã xem
+        </p>
+    </div>
+    <div id="sp-da-xem">
+        <div id="viewed-list"></div>
+        <div id="xem-them-le">
+            <a href="#">
+                <p class="bo-qua">Xem thêm</p>
+            </a>
+        </div>
+    </div>
+</div>
+<div id="block-2"></div>
+
+<div class="blocks" id="spinner">
+    <div class="block orange"></div>
+    <div class="block blue"></div>
+</div>
+
+
+
+<script type="text/javascript" src="./javascript/scrollInfinit.js" lang="javascript"></script>
