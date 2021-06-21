@@ -1,0 +1,127 @@
+<div class="category-row row">
+    <div class="col-12 col-sm-3 pe-sm-3 ps-sm-0 ">
+        <div class="filter p-sm-3 col-sm-12 bg-light px-5 mx-3 mx-sm-0" id="filter" style="font-size: 13px;">
+            <form action="/filter" method="post">
+                <div class="gia-tien">
+                    <h6 class=''>Giá</h6>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault1">
+                        <label class="form-check-label ms-1" for="flexRadioDefault1">
+                            0 - 10
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault2" checked>
+                        <label class="form-check-label ms-1" for="flexRadioDefault2">
+                            10 - 20
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault3">
+                        <label class="form-check-label ms-1" for="flexRadioDefault3">
+                            20 - 30
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault4" checked>
+                        <label class="form-check-label ms-1" for="flexRadioDefault4">
+                            30 - 40
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault5">
+                        <label class="form-check-label ms-1" for="flexRadioDefault5">
+                            40 - 50
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault6" checked>
+                        <label class="form-check-label ms-1" for="flexRadioDefault6">
+                            60 - 70
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault7">
+                        <label class="form-check-label ms-1" for="flexRadioDefault7">
+                            > 70
+                        </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="hinh-thuc">
+                    <h6 class=''>Hình thức</h6>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="format" value='Paperback'
+                            id="flexRadioDefault8">
+                        <label class="form-check-label ms-1" for="flexRadioDefault8">
+                            Bìa Cứng
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="format" value='Hardback'
+                            id="flexRadioDefault9" checked>
+                        <label class="form-check-label ms-1" for="flexRadioDefault9">
+                            Bìa Mềm
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="format" value='Book' id="flexRadioDefault10">
+                        <label class="form-check-label ms-1" for="flexRadioDefault10">
+                            Đóng Hộp
+                        </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="ngon-ngu">
+                    <h6 class=''>Ngôn ngữ</h6>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="language" id="flexRadioDefault11" value="en"
+                            checked>
+                        <label class="form-check-label ms-1" for="flexRadioDefault11">
+                            Tiếng Anh
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="language" id="flexRadioDefault12" value="vi">
+                        <label class="form-check-label ms-1" for="flexRadioDefault12">
+                            Tiếng Việt
+                        </label>
+                    </div>
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-warning mt-2 ">
+                    Lọc
+                    <i class="fas fa-chevron-right ml-2 text-sm"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="category bg-white col-sm-9 col-12 mx-0 mt-sm-0 mt-3">
+        <div id="book-list" class="mx-0">
+            {{#each categorys}}
+            <div class="row-image-2">
+                <a href="/books/{{this._id}}">
+                    <img class="mem-img-new" src="{{this.image}}">
+                </a>
+                <p class="mem-text ten-sach">
+                    <a href="/books/{{this._id}}">{{this.name}}</a>
+                </p>
+                <div class="mem-text ten-tac-gia">{{this.author}}</div>
+                <div class="mem-text hinh-thuc">{{this.format}}</div>
+                <span class="mem-info">{{this.price}}{{this.currency}}</span>
+                <span
+                    class="mem-info text-secondary text-decoration-line-through mx-3 small">{{this.old_price}}{{this.currency}}</span>
+            </div>
+            {{/each}}
+        </div>
+
+        <div id="pagination">
+        </div>
+
+
+    </div>
+</div>
+
+<script type="text/javascript" src="./javascript/pagination.js" lang="javascript"></script>

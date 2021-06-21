@@ -1,0 +1,46 @@
+<div id="err">
+    {{#each error}}
+    <div class="p-3 mb-2 bg-warning text-dark">
+        {{this}}
+    </div>
+    {{/each}}
+</div>
+<div id="validateErr">
+</div>
+<div id="form" class="row justify-content-center">
+    <div class="px-4 col-10 bg-white px-5 mt-3 py-4">
+
+        <div class="xl:w-3/4 mb-4">
+            <h4 class="text-3xl text-medium mb-4 text-warning">Welcome to King Book</h4>
+            <h5 class="text-warning">Sign Up</h5>
+            <p class="text-xl mb-2">Please submit your information.</p>
+        </div>
+        <div class="contact-form">
+            <form action="/signup" method="post">
+                <div class="row justify-content-center">
+                    <div class="sm:w-1/2 px-3 mt-3 col-8 text-right">
+                        <input type="text" placeholder="Email" name="email"
+                            class="px-3 py-1 w-75 form-control small text-success" style="font-size: 13px;">
+                    </div>
+                    <div class="sm:w-1/2 px-3 mt-3 col-8">
+                        <input type="text" placeholder="Password" name="password"
+                            class="px-3 py-1 w-75 form-control small text-success" style="font-size: 13px;">
+                    </div>
+                    <div class="sm:w-1/2 px-3 mt-3 col-8 text-right">
+                        <input type="text" placeholder="Retype Password" name="retype"
+                            class="px-3 py-1 w-75 form-control small text-success" style="font-size: 13px;">
+                    </div>
+
+                    <div class=" mt-4 mx-5 col-8">
+                        <div class="px-0 me-5">
+                            <button type="submit" class="btn btn-primary mb-3" style="font-size: 13px;">
+                                Sign Up
+                                <i class="fas fa-chevron-right ml-2 text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

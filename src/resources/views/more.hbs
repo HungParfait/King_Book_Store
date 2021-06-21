@@ -1,0 +1,119 @@
+{{#each book}}
+<div id="block-1" class="bg-white">
+    <div class="title-area">
+        <img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/ico_PCSC.png" alt="image-icon" class="mem-img-2">
+        <p class="title my-0">{{this}}</p>
+    </div>
+    <div class="">
+        <div class="">
+            <div class="list-modify list-group-horizontal list-group" id="list-tab" role="tablist">
+                <a class="list-group-item active" id="list-home-list" data-toggle="list" href="#list-home-{{this}}"
+                    role="tab" aria-controls="home">Top 1</a>
+                <a class="list-group-item" id="list-profile-list" data-toggle="list" href="#list-profile-{{this}}"
+                    role="tab" aria-controls="profile">Top 2</a>
+                <a class="list-group-item" id="list-messages-list" data-toggle="list" href="#list-messages-{{this}}"
+                    role="tab" aria-controls="messages">Top 3</a>
+                <a class="list-group-item" id="list-settings-list" data-toggle="list" href="#list-settings-{{this}}"
+                    role="tab" aria-controls="settings">Top 4</a>
+            </div>
+        </div>
+        <hr>
+        <div class="">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="list-home-{{this}}" role="tabpanel"
+                    aria-labelledby="list-home-list">
+                    <div class="row-1">
+                        {{#each ../top1}}
+                        <div class="row-image-1">
+                            <a href="/books/{{this._id}}">
+                                <img class="mem-img-new" src="{{this.image}}">
+                            </a>
+                            <p class="mem-text ten-sach">
+                                <a href="/books/{{this._id}}">{{this.name}}</a>
+                            </p>
+                            <div class="mem-text ten-tac-gia">{{this.author}}</div>
+                            <div class="mem-text hinh-thuc">{{this.format}}</div>
+                            <span class="mem-info">{{this.price}}{{this.currency}}</span>
+                            <span
+                                class="mem-info text-secondary text-decoration-line-through mx-3 small">{{this.old_price}}{{this.currency}}</span>
+                        </div>
+                        {{else}}
+                        <p class="text-center fst-italic m-5">Không có sản phẩm thích hợp</p>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-profile-{{this}}" role="tabpanel"
+                    aria-labelledby="list-profile-list">
+                    <div class="row-1">
+                        {{#each ../top2}}
+                        <div class="row-image-1">
+                            <a href="/books/{{this._id}}">
+                                <img class="mem-img-new" src="{{this.image}}">
+                            </a>
+                            <p class="mem-text ten-sach">
+                                <a href="/books/{{this._id}}">{{this.name}}</a>
+                            </p>
+                            <div class="mem-text ten-tac-gia">{{this.author}}</div>
+                            <div class="mem-text hinh-thuc">{{this.format}}</div>
+                            <span class="mem-info">{{this.price}}{{this.currency}}</span>
+                            <span
+                                class="mem-info text-secondary text-decoration-line-through mx-3 small">{{this.old_price}}{{this.currency}}</span>
+                        </div>
+                        {{else}}
+                        <p class="text-center fst-italic m-5">Không có sản phẩm thích hợp</p>
+                        {{/each}}
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="list-messages-{{this}}" role="tabpanel"
+                    aria-labelledby="list-messages-list">
+                    <div class="row-1">
+                        {{#each ../top3}}
+                        <div class="row-image-1">
+                            <a href="/books/{{this._id}}">
+                                <img class="mem-img-new" src="{{this.image}}">
+                            </a>
+                            <p class="mem-text ten-sach">
+                                <a href="/books/{{this._id}}">{{this.name}}</a>
+                            </p>
+                            <div class="mem-text ten-tac-gia">{{this.author}}</div>
+                            <div class="mem-text hinh-thuc">{{this.format}}</div>
+                            <span class="mem-info">{{this.price}}{{this.currency}}</span>
+                            <span
+                                class="mem-info text-secondary text-decoration-line-through mx-3 small">{{this.old_price}}{{this.currency}}</span>
+                        </div>
+                        {{else}}
+                        <p class="text-center fst-italic m-5">Không có sản phẩm thích hợp</p>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-settings-{{this}}" role="tabpanel"
+                    aria-labelledby="list-settings-list">
+                    <div class="row-1">
+                        {{#each ../top4}}
+                        <div class="row-image-1">
+                            <a href="/books/{{this._id}}">
+                                <img class="mem-img-new" src="{{this.image}}">
+                            </a>
+                            <p class="mem-text ten-sach">
+                                <a href="/books/{{this._id}}">{{this.name}}</a>
+                            </p>
+                            <div class="mem-text ten-tac-gia">{{this.author}}</div>
+                            <div class="mem-text hinh-thuc">{{this.format}}</div>
+                            <span class="mem-info">{{this.price}}{{this.currency}}</span>
+                            <span
+                                class="mem-info text-secondary text-decoration-line-through mx-3 small">{{this.old_price}}{{this.currency}}</span>
+                        </div>
+                        {{else}}
+                        <p class="text-center fst-italic m-5">Không có sản phẩm thích hợp</p>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="xem-them-1">
+        <p><a href="/category/{{this}}" class="xem-them">Xem thêm</a></p>
+    </div>
+</div>
+{{/each}}

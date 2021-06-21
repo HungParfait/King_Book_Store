@@ -1,0 +1,360 @@
+<link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.0.7/css/star-rating.css" media="all"
+    rel="stylesheet" type="text/css" />
+
+<link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.0.7/themes/krajee-fas/theme.css" media="all"
+    rel="stylesheet" type="text/css" />
+
+
+<div id="notification-login"
+    class="position-fixed pe-4 py-3 ps-3 bg-light  border-success border-2 d-none rounded z-index: 5"
+    style="width: 200px; top: 100px; right: 20px; font-size: 15px;">
+    <button class="position-absolute  btn ps-0 pe-1" onclick="hide()" style="top:0px; right: 0px;" id="cancel-login">
+        <i class="fas fa-times"></i>
+    </button>
+</div>
+
+
+<div id="noti-quantity" class="bg-warning text-secondary d-none position-fixed text-center p-2 rounded transparent"
+    style="top: 80px; right: 5px; z-index: 20;">
+    Invalid quantity!
+</div>
+
+<div id="noti-format" class="bg-warning text-secondary d-none position-fixed text-center p-2 rounded transparent"
+    style="top: 80px; right: 5px; z-index: 20;">
+    Định dạng không hợp lệ!
+</div>
+
+{{#each data.details}}
+<div class="mt-3 mx-2">
+    <a href="/category/{{this.category}}" class="my-0">
+        <span class="fw-bolder">{{this.category}}</span>
+    </a>
+    <i class="fas fa-angle-right my-0"></i>
+    <span class="fw-bolder my-0">{{this.name}}</span>
+</div>
+{{/each}}
+
+<div id=" detail-products" class="row w-100 bg-white pt-3 mx-0 pb-5 mt-3 mb-3 heart-bg-1">
+    {{#each data.details}}
+    <div class="image-show col-lg-5 col-xs-12 row position-relative">
+        <div class="col-12 row justify-content-center">
+            <div id="main-image" class="col-9 border-primary border-1 rounded rounded-1 py-3 border border-light"
+                style="box-shadow:  1px 1px 2px -1px #3d3d3d">
+                <img src="{{this.image}}" class="mem-img-3 img-thumbnail ">
+            </div>
+
+            <div id="show-image" class="col-12 d-flex justify-content-around mt-3">
+                <div class="frame-1 w-25 py-2 px-3 mb-2">
+                    <a href="{{this.image}}" class="">
+                        <img src="{{this.image}}" class="img-fluid img-thumbnail frame-image">
+                    </a>
+                </div>
+                <div class="frame-1 w-25 px-3 py-2 mb-2">
+                    <a href="{{this.image}}" class="">
+                        <img src="{{this.image}}" class="img-fluid img-thumbnail frame-image">
+                    </a>
+                </div>
+                <div class="frame-1 w-25  px-3 py-2 mb-2">
+                    <a href="{{this.image}}" class="">
+                        <img src="{{this.image}}" class="img-fluid img-thumbnail frame-image">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="button-click" class="row col-12 justify-content-center mt-2 mx-2">
+            <button type="submit" onclick="addProduct()" class="col-6 bo-qua text-center my-0 bg-white frame-image-1"
+                style="height: 40px;"> <i class="fas fa-shopping-bag me-2"></i>Thêm vào giỏ
+                hàng</button>
+            <a href="../checkout/cart" class="text-white col-6 " id="link-to-cart" onclick="toCart(event)">
+                <button type="button" class=" w-100 xem-them my-0 frame-image-1" style="border: none">
+                    Mua hàng
+                </button>
+            </a>
+        </div>
+    </div>
+    <div id="info-show" class="info-show col-lg-7 col-sm-12 mt-sm-3 mt-4">
+        <h5 class="text-uppercase fs-4 fw-bolder">{{this.name}} <span class="text-capitalize"> - {{this.author}} -
+                {{this.format}}</span>
+        </h5>
+        <div id="info-book" class="justify-content-start row">
+            <div id="dinh-dang" class="dinh-dang-sach col-5  my-3 ">Danh mục: <a href="/category/{{this.category}}"
+                    class="fw-bolder">{{this.category}}</a></div>
+            <div id="nxs" class="ten-tac-gia col-6  my-3 ">Nhà sản xuất: <span
+                    class="fw-bolder text-primary">{{this.author}}
+            </div>
+            <div id="tac-gia" class="ten-tac-gia col-5  ">Tác giả: <span class="fw-bolder ">{{this.author}}</span>
+            </div>
+            <div id="dinh-dang" class="dinh-dang-sach col-6  ">Định dạng: <span
+                    class="fw-bolder ">{{this.format}}</span></div>
+
+            <div class="col-12 row rounded position-relative p-0 my-3 mx-0">
+                <div class="col-3 heart-bg py-3 text-center fw-bolder "
+                    style="border-right: 1px dashed #fff; border-top-left-radius: 10px 16px; border-bottom-left-radius: 10px 16px;">
+                    FLASH SALE
+                </div>
+                <div class="col-9 bg-light py-3 clock-linear text-center text-secondary fs-6 d-flex">
+                    Kết Thúc Sau
+                    <div id="countdown" class="ms-3">
+                        <span id="hours" class="p-2 bg-white rounded fs-6"></span>
+                        <span id="" class="p-1 fs-6">:</span>
+                        <span id="minutes" class="p-2 bg-white rounded fs-6"></span>
+                        <span id="" class="p-1 fs-6">:</span>
+                        <span id="seconds" class="p-2 bg-white rounded fs-6"></span>
+                    </div>
+                </div>
+                <div class="position-absolute cut-2 top-0 px-0" style="z-index: 2"></div>
+                <div class="position-absolute cut-4 top-0 p-0" style="left: 25%"></div>
+                <div class="position-absolute cut-5 bottom-0 p-0" style="left: 25%"></div>
+            </div>
+
+            <input id="input-id" type="text" class="star col-12 my-2" value='{{this.book_depository_stars}}'>
+
+
+            <div id="gia" class="col-8 gia-sach row">
+                <span id="gia-moi" class="gia-moi col-5 col-sm-4 text-warning fs-1 my-3 fw-bolder">
+                    {{this.price}}{{this.currency}}</span>
+                <span id="gia-cu" class="gia-cu col-6 text-decoration-line-through text-secondary  fs-5 my-3">
+                    {{this.old_price}}{{this.currency}}</span>
+            </div>
+
+            <div class="col-4 d-flex justify-content-end">
+                <div class="bg-white rounded-circle heart frame-image-1 d-flex align-items-center justify-content-center"
+                    style="box-shadow: 1px 1px 5px -1px #3d3d3d; width: 40px; height: 40px">
+                    <i class="far fa-heart fa-2x"></i>
+                </div>
+            </div>
+
+            <div class="col-8 row justify-content-start h-50 mt-3 align-items-center">
+                <p class="col-sm-3 col-6 fs-6 fw-bolder">Số lượng:</p>
+                <div class="num-block skin-2 col-sm-5 col-6 mb-3">
+                    <div class="num-in frame-image-1" id="quantity-number">
+                        <span class="p-2 span-1"><i class="fas fa-minus"></i></span>
+                        <input type="text" class="in-num fs-6" value="1" id="display-quantity"
+                            onkeypress="checkChangeQty(event,this.id)" onpaste="checkChangeQty(event,this.id)">
+                        <span class="p-2 span-2"><i class="fas fa-plus"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white border-primary col-4 py-2 px-0"
+                style="transform: translate(-100px, -110px) rotate(15deg) ;">
+                <p class="text-primary text-center fw-bold vertically-center w-50">
+                    <img src="./image/like-stamp-png.png" class="img-fluid frame-image-1">
+                </p>
+            </div>
+
+            <hr class="text-primary">
+            <div id="nxs" class="ten-tac-gia col-6 my-3 fw-light">Thời gian giao hàng <a href="#"
+                    class="ms-3 text-decoration-underline fw-bolder">Chỉnh sửa</a></div>
+            <div id="xuat-su" class="dinh-dang-sach col-6  my-3  fw-light">Địa chỉ giao hàng <a href="#"
+                    class="ms-3 text-decoration-underline fw-bolder">Chỉnh sửa</a></div>
+            <div id="xuat-su" class="dinh-dang-sach col-6  my-3  fw-light">Chính sách đổi trả <a href="#"
+                    class="ms-3 text-decoration-underline fw-bolder">Xem thêm</a></div>
+            <div id="nxs" class="ten-tac-gia col-6  my-3  fw-light">Quản lý sản phẩm <a href="#"
+                    class="ms-3 text-decoration-underline fw-bolder">Xem thêm</a></div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+<div id="sp-block-1" class="bg-white my-3">
+    <div class="title-area">
+        <img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/ico_PCSC.png" alt="image-icon" class="mem-img-2">
+        <p class="title chinh-p">Sản Phẩm Liên Quan</p>
+    </div>
+    <div class="">
+        <div class="">
+            <div class="list-modify list-group-horizontal list-group" id="list-tab" role="tablist">
+                <a class="list-group-item active" id="list-home-list" data-toggle="list" href="#sp-tac-gia" role="tab"
+                    aria-controls="home">Tác giả</a>
+                <a class="list-group-item" id="list-profile-list" data-toggle="list" href="#sp-hinh-thuc" role="tab"
+                    aria-controls="profile">Hình thức</a>
+            </div>
+        </div>
+        <hr>
+        <div class="">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="sp-tac-gia" role="tabpanel" aria-labelledby="list-home-list">
+                    <div class="san-pham">
+                        <div class="row-1">
+                            {{#each data.authors}}
+                            <div class="row-image-1">
+                                <a href="/books/{{this._id}}">
+                                    <img class="mem-img-new" src="{{this.image}}">
+                                </a>
+                                <p class="mem-text ten-sach">
+                                    <a href="/books/{{this._id}}">{{this.name}}</a>
+                                </p>
+                                <div class="mem-text ten-tac-gia">{{this.author}}</div>
+                                <div class="mem-text hinh-thuc">{{this.format}}</div>
+                                <span class="mem-info">{{this.price}}{{this.currency}}</span>
+                                <span
+                                    class="mem-info text-secondary text-decoration-line-through mx-3 small">{{this.old_price}}{{this.currency}}</span>
+                            </div>
+                            {{else}}
+                            <p class="text-center fst-italic my-5">Không có sản phẩm phù hợp</p>
+                            {{/each}}
+                        </div>
+                        <div class="pb-3">
+                            <p><a href="#" class="xem-them">Xem thêm</a></p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="sp-hinh-thuc" role="tabpanel" aria-labelledby="list-profile-list">
+                    <div class="san-pham">
+                        <div class="row-1">
+                            {{#each data.formats}}
+                            <div class="row-image-1">
+                                <a href="/books/{{this._id}}">
+                                    <img class="mem-img-new" src="{{this.image}}">
+                                </a>
+                                <p class="mem-text ten-sach">
+                                    <a href="/books/{{this._id}}">{{this.name}}</a>
+                                </p>
+                                <div class="mem-text ten-tac-gia">{{this.author}}</div>
+                                <div class="mem-text hinh-thuc">{{this.format}}</div>
+                                <span class="mem-info">{{this.price}}{{this.currency}}</span>
+                                <span
+                                    class="mem-info text-secondary text-decoration-line-through mx-3 small">{{this.old_price}}{{this.currency}}</span>
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div class="pb-3">
+                            <p><a href="#" class="xem-them">Xem thêm</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{{#each data.details}}
+<div id="danh-gia" class="danh-gia bg-white">
+    <div class="title-area">
+        <img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/ico_PCSC.png" alt="image-icon" class="mem-img-2">
+        <p class="title chinh-p">Thông Tin - Nhận xét</p>
+    </div>
+    <div class="">
+        <div class="">
+            <div class="list-modify list-group-horizontal list-group" id="list-tab" role="tablist">
+                <a class="list-group-item active" id="list-home-list" data-toggle="list" href="#sp-thong-tin" role="tab"
+                    aria-controls="home">Thông Tin Chi Tiết</a>
+                <a class="list-group-item" id="list-profile-list" data-toggle="list" href="#sp-danh-gia" role="tab"
+                    aria-controls="profile">Nhận xét - Đánh Giá</a>
+            </div>
+        </div>
+        <hr>
+        <div class="">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="sp-thong-tin" role="tabpanel"
+                    aria-labelledby="list-home-list">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td>Mã sản phẩm</td>
+                                <td>{{this.name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Tác giả</td>
+                                <td>{{this.author}}</td>
+                            </tr>
+                            <tr>
+                                <td>Nhà xuất bản</td>
+                                <td>{{this.author}}</td>
+                            </tr>
+                            <tr>
+                                <td>Mã sản phẩm</td>
+                                <td>{{this.name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Tác giả</td>
+                                <td>{{this.author}}</td>
+                            </tr>
+                            <tr>
+                                <td>Nhà xuất bản</td>
+                                <td>{{this.author}}</td>
+                            </tr>
+                            <tr>
+                                <td>Mã sản phẩm</td>
+                                <td>{{this.name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Tác giả</td>
+                                <td>{{this.author}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" role="tabpanel" id="sp-danh-gia" aria-labelledby="list-profile-list">
+                    {{#each ../data.comments}}
+                    <div class="row mt-2">
+                        <div class="col-3 row">
+                            <p class="text-center col-12 text-warning">
+                                <i class="far fa-user-circle fa-2x"></i>
+                            </p>
+                            <p class="text-center col-12 text-warning">
+                                {{this.userId}}
+                            </p>
+                        </div>
+                        <div class="col-9">
+                            <input id="input-id" type="text" class="star-rating col-12 my-2"
+                                value='{{this.star_rating}}'>
+                            <span class="text-warning">
+                                <i class="far fa-check-circle"></i>
+                                Đã mua hàng
+                            </span>
+                            <p class="p-3">{{this.comments}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    {{else}}
+                    <p class="fst-italic fs-6 py-5 text-center">
+                        Sản phẩm chưa có đánh giá
+                    </p>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/each}}
+
+<script type="text/javascript" src="./javascript/checkOut.js" lang="javascript"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.star').rating({
+            hoverOnClear: false,
+            theme: 'krajee-fas',
+            containerClass: 'is-star',
+            displayOnly: true,
+            min: 0,
+            max: 5,
+            step: 0.1,
+            showClear: false,
+            filledStar: '<i class="fas fa-star text-warning"></i>'
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('.star-rating').rating({
+            hoverOnClear: false,
+            theme: 'krajee-fas',
+            displayOnly: true,
+            min: 0,
+            max: 5,
+            step: 1,
+            size: 'sm',
+            showClear: false,
+            filledStar: '<i class="fas fa-star fa-2x text-warning"></i>',
+            emptyStar: '<i class="fas fa-star fa-2x"></i>',
+        });
+    });
+</script>

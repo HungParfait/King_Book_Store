@@ -1,0 +1,127 @@
+<div id="noti-quantity" class="bg-warning text-secondary d-none position-fixed text-center p-2 rounded transparent"
+    style="top: 80px; right: 5px; z-index: 20;">
+    Invalid quantity!
+</div>
+
+<div id="noti-format" class="bg-warning text-secondary d-none position-fixed text-center p-2 rounded transparent"
+    style="top: 80px; right: 5px; z-index: 20;">
+    Định dạng không hợp lệ!
+</div>
+
+{{#each user}}
+<div id="thanh-toan" class="thanh-toan row mt-3 mx-0 px-0">
+    <div class="col-lg-8 col-xs-12 mt-xs-3 bg-white">
+        <form action="/checkout/cart" method="post" id="form-thanh-toan">
+            <table class="table">
+                <thead>
+                    <tr class="fw-bolder">
+                        <th scope="col">
+                            <div class="form-check" id="select-all-div">
+                                <input class="form-check-input" type="checkbox" value="0" id="select-all"
+                                    checked="checked" onchange="checkedChange(event)">
+                                <label class="form-check-label mt-1" for="select-all">
+                                    Select
+                                </label>
+                            </div>
+                        </th>
+                        <th scope="col" class="text-center">Sản Phẩm</th>
+                        <th scope="col" class="text-center">Số Lượng</th>
+                        <th scope="col" colspan="2" class="text-center">Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {{#each ../products }}
+                    <tr id="tr-{{this.id}}">
+                        <th scope="row">
+                            <div class="form-check align-self-center text-center">
+                                <input class="form-check-input" type="checkbox" value="1" id="{{this.id}}"
+                                    name="{{this.id}}" checked="checked">
+                            </div>
+                        </th>
+                        <td>
+                            <div id="ten-hang" class="">
+                                <a href="/books/{{this.id}}" class="row px-0">
+                                    <img src="{{this.image}}" class="mem-img-3 col-sm-4 col-10">
+                                    <p class="col-sm-8 col-12 fst-italic mem-text mx-0" style="color: red; font-weight: 700;">
+                                        {{this.name}} -
+                                        {{this.author}}
+                                    </p>
+                                </a>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="num-block skin-2 align-self-center">
+                                <div class="num-in" id="quantity-number-{{@index}}">
+                                    <span class="p-2 span-1" onclick="subtractProds('{{this.id}}',event)"><i
+                                            class="fas fa-minus"></i></span>
+                                    <input type="text" class="in-num w-25" value="{{this.quantity}}"
+                                        id="display-quantity-{{this.id}}" onkeypress="checkChangeQty(event,this.id)"
+                                        onpaste="checkChangeQty(event,this.id)" onchange="changeQty(this.value,event)">
+                                    <span class="p-2 span-2" onclick="addProds('{{this.id}}',event)"><i
+                                            class="fas fa-plus"></i></span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="thanh-tien" class="text-center mx-sm-4 mx-0">
+                                <div class="" style="width: 70px;">
+                                    <span class="fw-bolder d-block" id="price-{{this.id}}">{{this.price}}</span>
+                                    <div class="center d-none position-relative" id="noti-spinner-{{this.id}}">
+                                        <h1>Loading</h1>
+                                    </div>
+                                </div>
+                                <button class="btn p-0 doi-mau" type="button" onclick="submitFunc(this.id)"
+                                    form="delete" style="font-size: 13px;" id="submit-{{this.id}}">
+                                    Xóa
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    {{else}}
+                    <tr>
+                        <p class="text-center fst-italic mt-4">Giỏ hàng trống</p>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="position-relative col-lg-4 col-xs-8 mt-sm-0 mt-3">
+        <div class="position-sticky" id="thanh-toan-khuyen-mai-1">
+            <div id="khuyen-mai" class="bg-white">
+                <div class="row bg-light mx-0 py-2">
+                    <p class="col-6 fw-bold text-primary"><i class="fas fa-tags"></i> Khuyến mãi</p>
+                    <div class="col-6 text-end fw-bold text-warning">Xem thêm <i class="fas fa-angle-right"></i>
+                    </div>
+                </div>
+                <div class="text-center py-5">
+                    Hiện tại chưa có giảm giá cho bạn
+                </div>
+            </div>
+
+            <div id="thanh-toan" class="bg-white p-3 mt-3">
+                <div class="row">
+                    <p class="col-6">Thành tiền</p>
+                    <div class="col-6 text-end" id="amount-1">{{this.price}}</div>
+                </div>
+                <hr>
+
+                <div class="row">
+                    <p class="col-6 fw-bold">Tổng số tiền (VAT)</p>
+                    <div class="col-6 text-end fw-bold text-warning" id="amount-2">{{this.priceTax}}</div>
+                </div>
+
+                <button type="submit" class="xem-them-2" style="font-size: 14px;" form="form-thanh-toan"
+                    id='pay-button'>
+                    Thanh toán
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+{{/each}}
+
+<script type="text/javascript" src="./javascript/validateAndDelete.js" lang="javascript"></script>

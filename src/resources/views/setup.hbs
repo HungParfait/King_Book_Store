@@ -1,0 +1,71 @@
+<div id="err">
+    {{#each error}}
+    <div class="p-3 mb-2 bg-warning text-dark">
+        {{this}}
+    </div>
+    {{/each}}
+</div>
+<div id="validateErr">
+</div>
+<div id="form" class=" row justify-content-center">
+    <div class="px-4 col-10 bg-white px-5 mt-3 py-4">
+
+        <div class="xl:w-3/4 mb-4">
+            <h4 class="text-3xl text-medium mb-4 text-warning">Hoàn thiện các thông tin cá nhân của bạn</h1>
+                <p class="text-xl mb-2">Please submit your information.</p>
+        </div>
+
+        <div class="md md:-mx-4 mt-4 md:mt-10">
+            <div class="md:w-2/3 md:px-4">
+                <div class="contact-form">
+                    <form action="/setup" method="post">
+                        <div class="row ">
+                            <div class="sm:w-1/2 px-3 mt-3 col-5 text-right">
+                                <input type="text" placeholder="Given Name" name="givenname"
+                                    class="px-3 py-1 w-75 form-control small text-success" style="font-size: 13px;">
+                            </div>
+                            <div class="sm:w-1/2 px-3 mt-3 col-5">
+                                <input type="text" placeholder="Family Name" name="familyname"
+                                    class="px-3 py-1 w-75 form-control small text-success" style="font-size: 13px;">
+                            </div>
+                            <div class="sm:w-1/2 px-3 mt-3 col-5 text-right">
+                                <input type="text" placeholder="User Name" name="username"
+                                    class="px-3 py-1 w-75 form-control small text-success" style="font-size: 13px;">
+                            </div>
+                            <div class="sm:w-1/2 px-3 mt-3 col-5">
+                                <input type="text" placeholder="Phone number" name="phone"
+                                    class="px-3 py-1 w-75 form-control small text-success" style="font-size: 13px;">
+                            </div>
+                            <div class="w-100 px-3 mt-3 col-5 text-right">
+                                <input type="text" placeholder="Road Name" name="road"
+                                    class="px-3 py-1 w-75 form-control small text-success" style="font-size: 13px;">
+                            </div>
+                            <div class="sm:w-1/2 px-3 mt-3 col-5">
+                                <input type="text" placeholder="District" name="district"
+                                    class="px-3 py-1 w-75 form-control small text-success" style="font-size: 13px;">
+                            </div>
+                            <div class="sm:w-1/2 mt-3 px-3 col-5 ">
+                                <input type="text" placeholder="City" name="city"
+                                    class="px-3 py-1 w-75 form-control small text-success" style="font-size: 13px;">
+                            </div>
+                            <div class="sm:w-full px-3 col-10 justify-content-center mt-3 text-center">
+                                <textarea id="message" cols="30" rows="4"
+                                    placeholder="Địa chỉ cụ thể(số nhà, tên phố)" name="detailaddress"
+                                    class="px-3 py-1 w-75 form-control small text-success"
+                                    style="font-size: 13px;"></textarea>
+                            </div>
+
+                        </div>
+                        <div class="text-right mt-4 mx-5 col-9">
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary mb-3" style="font-size: 13px;">
+                                    Send information
+                                    <i class="fas fa-chevron-right ml-2 text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
