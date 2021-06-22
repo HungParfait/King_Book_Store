@@ -1,10 +1,3 @@
-<link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.0.7/css/star-rating.css" media="all"
-    rel="stylesheet" type="text/css" />
-
-<link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.0.7/themes/krajee-fas/theme.css" media="all"
-    rel="stylesheet" type="text/css" />
-
-
 <div id="notification-login"
     class="position-fixed pe-4 py-3 ps-3 bg-light  border-success border-2 d-none rounded z-index: 5"
     style="width: 200px; top: 100px; right: 20px; font-size: 15px;">
@@ -34,16 +27,16 @@
 </div>
 {{/each}}
 
-<div id=" detail-products" class="row w-100 bg-white pt-3 mx-0 pb-5 mt-3 mb-3 heart-bg-1">
+<div id=" detail-products" class="row gx-0 w-100 bg-white pt-3 mx-0 pb-5 mt-3 mb-3 heart-bg-1">
     {{#each data.details}}
-    <div class="image-show col-lg-5 col-xs-12 row position-relative">
-        <div class="col-12 row justify-content-center">
+    <div class="image-show col-lg-5 col-xs-12 gx-0">
+        <div class="gx-0 row justify-content-center">
             <div id="main-image" class="col-9 border-primary border-1 rounded rounded-1 py-3 border border-light"
                 style="box-shadow:  1px 1px 2px -1px #3d3d3d">
                 <img src="//images.weserv.nl/?url={{this.image}}" class="mem-img-3 img-thumbnail ">
             </div>
 
-            <div id="show-image" class="col-12 d-flex justify-content-around mt-3">
+            <div id="show-image" class="col-12 d-md-flex justify-content-around mt-3 d-none">
                 <div class="frame-1 w-25 py-2 px-3 mb-2">
                     <a href="{{this.image}}" class="">
                         <img src="//images.weserv.nl/?url={{this.image}}" class="img-fluid img-thumbnail frame-image">
@@ -61,33 +54,38 @@
                 </div>
             </div>
         </div>
-        <div id="button-click" class="row col-12 justify-content-center mt-2 mx-2">
-            <button type="submit" onclick="addProduct()" class="col-6 bo-qua text-center my-0 bg-white frame-image-1"
-                style="height: 40px;"> <i class="fas fa-shopping-bag me-2"></i>Thêm vào giỏ
-                hàng</button>
-            <a href="../checkout/cart" class="text-white col-6 " id="link-to-cart" onclick="toCart(event)">
-                <button type="button" class=" w-100 xem-them my-0 frame-image-1" style="border: none">
+        <div id="button-click" class="row gx-0 mt-2">
+            <div class="col-12">
+                <button type="submit" onclick="addProduct()" class="bo-qua text-center bg-white frame-image-1 mx-auto"
+                    style="height: 40px; border-radius: 20px"> <i class="fas fa-shopping-bag me-2"></i>Thêm vào giỏ
+                    hàng
+                </button>
+            </div>
+            <div class="col-12">
+                <button type="button" class="xem-them frame-image-1 mx-auto px-3" style="border: none"
+                    onclick="toCart(event)">
                     Mua hàng
                 </button>
-            </a>
+            </div>
         </div>
     </div>
-    <div id="info-show" class="info-show col-lg-7 col-sm-12 mt-sm-3 mt-4">
+    <div id="info-show" class="info-show col-lg-7 col-sm-12 mt-sm-3 mt-4 ms-2 ms-sm-0">
         <h5 class="text-uppercase fs-4 fw-bolder">{{this.name}} <span class="text-capitalize"> - {{this.author}} -
                 {{this.format}}</span>
         </h5>
-        <div id="info-book" class="justify-content-start row">
-            <div id="dinh-dang" class="dinh-dang-sach col-5  my-3 ">Danh mục: <a href="/category/{{this.category}}"
-                    class="fw-bolder">{{this.category}}</a></div>
-            <div id="nxs" class="ten-tac-gia col-6  my-3 ">Nhà sản xuất: <span
+        <div id="info-book" class="row">
+            <div id="dinh-dang" class="dinh-dang-sach col-sm-5 col-12 my-sm-3 my-2">Danh mục: <a
+                    href="/category/{{this.category}}" class="fw-bolder">{{this.category}}</a></div>
+            <div id="nxs" class="ten-tac-gia col-sm-6 col-8  my-sm-3 my-2">Nhà sản xuất: <span
                     class="fw-bolder text-primary">{{this.author}}
             </div>
-            <div id="tac-gia" class="ten-tac-gia col-5  ">Tác giả: <span class="fw-bolder ">{{this.author}}</span>
+            <div id="tac-gia" class="ten-tac-gia col-sm-5 col-8  my-2">Tác giả: <span
+                    class="fw-bolder ">{{this.author}}</span>
             </div>
-            <div id="dinh-dang" class="dinh-dang-sach col-6  ">Định dạng: <span
+            <div id="dinh-dang" class="dinh-dang-sach col-sm-6 col-8  my-2">Định dạng: <span
                     class="fw-bolder ">{{this.format}}</span></div>
 
-            <div class="col-12 row rounded position-relative p-0 my-3 mx-0">
+            <div class="col-12 row gx-0 position-relative p-0 my-0 d-none d-sm-block">
                 <div class="col-3 heart-bg py-3 text-center fw-bolder "
                     style="border-right: 1px dashed #fff; border-top-left-radius: 10px 16px; border-bottom-left-radius: 10px 16px;">
                     FLASH SALE
@@ -107,7 +105,7 @@
                 <div class="position-absolute cut-5 bottom-0 p-0" style="left: 25%"></div>
             </div>
 
-            <input id="input-id" type="text" class="star col-12 my-2" value='{{this.book_depository_stars}}'>
+            <input id="input-id" type="text" class="star col-12 my-sm-2 my-3" value='{{this.book_depository_stars}}'>
 
 
             <div id="gia" class="col-8 gia-sach row">
@@ -124,9 +122,9 @@
                 </div>
             </div>
 
-            <div class="col-8 row justify-content-start h-50 mt-3 align-items-center">
-                <p class="col-sm-3 col-6 fs-6 fw-bolder">Số lượng:</p>
-                <div class="num-block skin-2 col-sm-5 col-6 mb-3">
+            <div class="col-sm-8 col-12 row justify-content-start h-50 mt-3 align-items-center">
+                <p class="col-sm-3 col-5 fs-6 fw-bolder">Số lượng:</p>
+                <div class="num-block skin-2 col-sm-5 col-7 mb-3">
                     <div class="num-in frame-image-1" id="quantity-number">
                         <span class="p-2 span-1"><i class="fas fa-minus"></i></span>
                         <input type="text" class="in-num fs-6" value="1" id="display-quantity"
@@ -136,7 +134,7 @@
                 </div>
             </div>
 
-            <div class="bg-white border-primary col-4 py-2 px-0"
+            <div class="bg-white border-primary col-4 py-2 px-0 d-none d-sm-block"
                 style="transform: translate(-100px, -110px) rotate(15deg) ;">
                 <p class="text-primary text-center fw-bold vertically-center w-50">
                     <img src="./image/like-stamp-png.png" class="img-fluid frame-image-1">
@@ -144,13 +142,14 @@
             </div>
 
             <hr class="text-primary">
-            <div id="nxs" class="ten-tac-gia col-6 my-3 fw-light">Thời gian giao hàng <a href="#"
+
+            <div id="nxs" class="ten-tac-gia col-sm-6 col-12 my-sm-3 my-2 fw-light">Thời gian giao hàng <a href="#"
                     class="ms-3 text-decoration-underline fw-bolder">Chỉnh sửa</a></div>
-            <div id="xuat-su" class="dinh-dang-sach col-6  my-3  fw-light">Địa chỉ giao hàng <a href="#"
-                    class="ms-3 text-decoration-underline fw-bolder">Chỉnh sửa</a></div>
-            <div id="xuat-su" class="dinh-dang-sach col-6  my-3  fw-light">Chính sách đổi trả <a href="#"
-                    class="ms-3 text-decoration-underline fw-bolder">Xem thêm</a></div>
-            <div id="nxs" class="ten-tac-gia col-6  my-3  fw-light">Quản lý sản phẩm <a href="#"
+            <div id="xuat-su" class="dinh-dang-sach col-sm-6 col-12  my-sm-3 my-2  fw-light">Địa chỉ giao hàng <a
+                    href="#" class="ms-3 text-decoration-underline fw-bolder">Chỉnh sửa</a></div>
+            <div id="xuat-su" class="dinh-dang-sach col-sm-6 col-12  my-sm-3 my-2  fw-light">Chính sách đổi trả <a
+                    href="#" class="ms-3 text-decoration-underline fw-bolder">Xem thêm</a></div>
+            <div id="nxs" class="ten-tac-gia col-sm-6 col-12 my-sm-3 my-2  fw-light">Quản lý sản phẩm <a href="#"
                     class="ms-3 text-decoration-underline fw-bolder">Xem thêm</a></div>
         </div>
     </div>
@@ -160,7 +159,7 @@
 <div id="sp-block-1" class="bg-white my-3">
     <div class="title-area">
         <img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/ico_PCSC.png" alt="image-icon" class="mem-img-2">
-        <p class="title chinh-p">Sản Phẩm Liên Quan</p>
+        <p class="title my-0">Sản Phẩm Liên Quan</p>
     </div>
     <div class="">
         <div class="">
@@ -196,7 +195,7 @@
                             {{/each}}
                         </div>
                         <div class="pb-3">
-                            <p><a href="#" class="xem-them">Xem thêm</a></p>
+                            <p><a href="#" class="xem-them mx-auto mt-2">Xem thêm</a></p>
                         </div>
                     </div>
 
@@ -228,7 +227,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 
@@ -236,7 +234,7 @@
 <div id="danh-gia" class="danh-gia bg-white">
     <div class="title-area">
         <img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/ico_PCSC.png" alt="image-icon" class="mem-img-2">
-        <p class="title chinh-p">Thông Tin - Nhận xét</p>
+        <p class="title my-0">Thông Tin - Nhận xét</p>
     </div>
     <div class="">
         <div class="">
