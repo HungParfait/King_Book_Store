@@ -297,7 +297,7 @@ async function addProds(id, event) {
         }, 3000)
     }
 }
-
+/*
 window.onscroll = () => {
     let element = document.querySelector('#thanh-toan-khuyen-mai');
     let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
@@ -308,8 +308,8 @@ window.onscroll = () => {
     }
     value = 0 - windowRelativeTop;
     element.style.top = `${value}px`;
-
 }
+*/
 
 
 

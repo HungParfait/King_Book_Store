@@ -1,19 +1,21 @@
 {
-    let quantity = document.getElementById('quantity-number');
-    let display = document.getElementById('display-quantity');
-    let span = quantity.getElementsByTagName('span');
-    span[0].addEventListener('click', () => {
-        display.value = (+display.value >= 2) ? (+display.value - 1) : +display.value;
+    let quantity = document.getElementById('gia-moi').innerHTML;
+    let display = document.querySelectorAll('.display-quantity')[0];
+    $(document).ready(function () {
+        $(".span-1").click(function () {
+            display.value = (+display.value >= 2) ? (+display.value - 1) : +display.value;
+            $(".display-quantity").val(display.value);
+            $('.tinh-tien').html((+quantity * +display.value).toFixed(2));
+        })
+        $('.span-2').click(function () {
+            display.value = +display.value + 1;
+            $(".display-quantity").val(display.value);
+            $('.tinh-tien').html((+quantity * +display.value).toFixed(2));
+        })
     })
-
-    span[1].addEventListener('click', () => {
-        display.value = +display.value + 1;
-    })
-
 }
 
 async function toCart(e) {
-    e.preventDefault();
     let bookID = window.location.pathname.replace('/books/', '');
     let x = document.getElementById('display-quantity');
     let y = document.getElementById('gia-moi');
@@ -30,18 +32,15 @@ async function toCart(e) {
     window.location.href = '/checkout/cart';
 }
 
-async function addProduct() {
-    let bookID = window.location.pathname.replace('/books/', '');
-    let x = document.getElementById('display-quantity');
-    let y = document.getElementById('gia-moi');
-    let price = y.innerHTML.replace('$', '')
+async function addProduct(id) {
+    let quantity = document.getElementsByClassName('display-quantity')[0].value;
+    console.log(quantity)
     let response = await axios({
         method: 'POST',
-        url: `/books/${bookID}`,
+        url: `/books/${id}`,
         data: {
-            id: bookID,
-            quantity: +x.value,
-            price: price.trimEnd().trimStart()
+            id: id,
+            quantity: quantity,
         },
     })
     let display = document.getElementById('notification-login');
@@ -79,15 +78,13 @@ function checkChangeQty(event, name) {
             }, 3000)
 
         };
-    }
-    else {
+    } else {
         var x = event.which || event.keyCode;
         let input = document.querySelector(`#${name}`);
         let isNotNumber = reg.test(String.fromCharCode(x));
         if (isNotNumber) {
             event.preventDefault();
-        }
-        else {
+        } else {
             let Qty = parseInt(input.value + String.fromCharCode(x));
             if (Qty <= 0 || Qty > 99) {
                 event.preventDefault();
@@ -102,7 +99,7 @@ function checkChangeQty(event, name) {
         }
     }
 }
-
+/*
 (function () {
     const second = 1000,
         minute = second * 60,
@@ -129,3 +126,4 @@ function checkChangeQty(event, name) {
             //seconds
         }, 0)
 }());
+*/

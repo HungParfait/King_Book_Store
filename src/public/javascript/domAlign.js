@@ -1,3 +1,4 @@
+/*
 {
     let coVN = document.getElementById('co-VN');
     let coAnh = document.getElementById("co-Anh");
@@ -13,12 +14,10 @@
         coVN.style.display = 'inline';
     })
 
-
     function cancelFunc() {
         let login = document.getElementById("login-area");
         login.style.display = 'none';
     }
-
 
     function cancelFunc1() {
         let login = document.getElementById("login-area-1");
@@ -36,26 +35,60 @@
         let login3 = document.getElementById("login-area-1");
         login3.style.display = 'block';
     })
-
-
-
-
-
-
-
-
-    let daXem = document.getElementById('da-xem');
-    daXem.addEventListener('click', function () {
-        let spDaXem = document.getElementById('sp-da-xem');
-        if (daXem.style.right == '0px') {
-            spDaXem.style.display = 'block';
-            daXem.style.right = '400px';
-        }
-        else if (daXem.style.right == '400px') {
-            spDaXem.style.display = 'none';
-            daXem.style.right = '0px';
-        }
-    }
-    )
 }
+*/
+$(document).ready(function () {
+    $('.star').each(function () {
+        let code = starDisplayGenerator($(this).val());
+        $(this).parent().html(code);
+    })
+});
+
+function starDisplayGenerator(number) {
+    let code = '';
+    number = +number;
+    const rate = '<i class="fas fa-star" style="color: #011589"></i>';
+    const rateHalf = '<i class="fas fa-star-half-alt"></i>'
+    const change = Math.ceil(number) - number
+    for (let i = 0; i < Math.floor(number); i++) {
+        code += rate;
+    }
+    if (change <= 0.5 && change !== 0) {
+        code += rateHalf;
+    }
+    return code;
+}
+
+
+function toTop() {
+    window.scrollTo(pageXOffset, 0);
+}
+
+$(document).scroll(function () {
+    var y = $(this).scrollTop();
+    $('.hook-effect').each(function () {
+        var t = $(this).offset().top;
+        if (y > t-600) {
+            $(this).animate({top: '0px'})
+        }
+    })
+
+    $('.offset-text').each(function () {
+        var t = $(this).parent().offset().top;
+        if (y > t-400) {
+            $(this).fadeIn();
+            $(this).animate({left: '0px',opacity: '1'},'slow')
+        }
+    });
+    $('.offset-image').each(function () {
+        var t = $(this).parent().offset().top;
+        if (y > t-400) {
+            $(this).fadeIn();
+            $(this).animate({right: '0px', opacity: '1'},'slow')   
+        }
+    });
+});
+
+
+
 
