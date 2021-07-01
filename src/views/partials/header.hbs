@@ -1,30 +1,24 @@
+<!--
 <div class="">
     <div class="bg-warning" id="small-nav">
-        <p class="text-center">
-            <a class='' href='/home'>
-                <img id="brand-img-small" class="mem-img-small" src="./image/logo.png" alt="web-logo">
-            </a>
-        </p>
-        <div class="top-nav-small">
-            <i class="fas fa-bars text-white fa-lg" onclick="displayHorizontal()"></i>
+        <div class="top-nav-small d-flex justify-content-between">
+            <span>
+                <a class='' href='/home'>
+                    <img id="brand-img-small" class="mem-img-small" src="./image/logo.png" alt="web-logo">
+                </a>
+            </span>
 
-            <form action="/search/result" id="" class="d-flex w-75 mx-3">
-                <input type="text" name="q" placeholder="Search" class="w-100 rounded px-2"
-                    style="border: none!important;outline: none!important;">
-                <span class="left-shift" id="search-icon">
-                    <button type="submit" class="btn fs-6">
-                        <i class="fas fa-search text-warning"></i>
-                    </button>
-                </span>
-            </form>
+            <i class="fas fa-search text-white" onclick="displayHorizontal('search-header')"></i>
+
+            <i class="fas fa-bars text-white fa-lg" onclick="displayHorizontal('small-mover-father')"></i>
 
             {{#unless logedIn}}
-            <span class="text-center mx-1">
+            <span class="text-center">
                 <a class='fs-5' href='#'>
                     <i class="fas fa-cart-plus text-white"></i>
                 </a>
             </span>
-            <span class="text-center mx-2 li-nav" id="log-in">
+            <span class="text-center" id="log-in">
                 <a class='fs-5' href='#'>
                     <i class="far fa-user text-white"></i>
                 </a>
@@ -102,7 +96,7 @@
             {{/unless}}
 
             {{#if logedIn}}
-            <span class="li-nav position-relative">
+            <span class="position-relative">
                 <a href="/checkout/cart" class="text-center text-white fs-5">
                     <i class="fas fa-cart-plus"></i>
                 </a>
@@ -112,7 +106,7 @@
                 </div>
             </span>
 
-            <span class="li-nav" id="">
+            <span class="" id="">
                 <div class="dropdown position-relative" style="left: 30px">
                     <a class="dropdown-toggle fs-5" href="#" role="button" id="dropdownMenuLink"
                         data-bs-toggle="dropdown" aria-expanded="false" style="color: orange;">
@@ -134,12 +128,26 @@
             {{/if}}
         </div>
 
+        <div id="search-header" class="d-flex p-2">
+            <form action="/search/result" id="" class="w-75">
+                <input type="text" name="q" placeholder="Search" class="w-100 rounded px-2"
+                    style="border: none!important;outline: none!important;display: none">
+                <button type="submit" class="btn fs-6 ms-n5">
+                    <i class="fas fa-search text-warning"></i>
+                </button>
+            </form>
+            <div class="w-25">
+                <i class="fas fa-times fa-lg" onclick="cancel()"></i>
+            </div>
+        </div>
+
+
         <div id="small-mover-father">
             <div id='small-mover' class="small-mover-effect bg-white">
                 <img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/default.svg">
                 <img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/english.svg">
                 <p>DANH MỤC SẢN PHẨM
-                    <i class="fas fa-times fa-lg" onclick="cancel()"></i>
+                    <i class="fas fa-times fa-lg" onclick="cancel('small-mover-father')"></i>
                 </p>
 
                 {{#each book}}
@@ -154,13 +162,13 @@
         </div>
     </div>
     <script>
-        function displayHorizontal() {
-            let smallMover = document.getElementById('small-mover-father');
+        function displayHorizontal(id) {
+            let smallMover = document.getElementById(id);
             smallMover.style.display = 'block';
         }
 
-        function cancel() {
-            let cancel = document.getElementById('small-mover-father');
+        function cancel(id) {
+            let cancel = document.getElementById(id);
             let body = document.getElementsByTagName('body');
             body[0].style.position = 'inherit';
             cancel.style.display = 'none';
@@ -189,7 +197,7 @@
                 <span class="li-nav">
 
                     <i class="fas fa-bell fa-lg"></i>
-                    <p class="chinh-p">THÔNG BÁO</p>
+                    <p class="my-0">THÔNG BÁO</p>
 
                     <div id="notification" class="fade-view bg-white">
                         <i class="fas fa-user-friends fa-5x" style="color: blue;position: absolute; ;left:33%"></i>
@@ -201,7 +209,7 @@
                 </span>
                 <span class="li-nav">
                     <i class="fas fa-cart-plus fa-lg"></i>
-                    <p class="chinh-p">GIỎ HÀNG</p>
+                    <p class="my-0">GIỎ HÀNG</p>
                     <div id="cart" class="fade-view bg-white">
                         <p style="text-align: center;color: #333333;">Bạn cần đăng nhập để xem giỏ hàng</p>
                         <p style="text-align: center;color: #333333;">Số tiền thanh toán <span>0</span> đ</p>
@@ -210,81 +218,14 @@
                 </span>
                 <span class="li-nav" id="log-in-1">
                     <i class="fas fa-sign-in-alt fa-lg"></i>
-                    <p class="chinh-p">ĐĂNG NHẬP</p>
+                    <p class="my-0">ĐĂNG NHẬP</p>
                 </span>
                 {{/unless}}
-
-                <div class="hien-thi" id="login-area-1">
-                    <div class="dep bg-white">
-                        <div class="" style="margin-bottom: 20px;">
-                            <div class="list-group list-group-horizontal" id="list-login" role="tablist">
-                                <a class="list-group-item list-group-item-action active login-animation"
-                                    id="login-login" data-toggle="list" href="#login-form" role="tab"
-                                    aria-controls="home">Đăng
-                                    nhập</a>
-                                <a class="list-group-item list-group-item-action login-animation" id="signin-signin"
-                                    data-toggle="list" href="#signin-form" role="tab" aria-controls="profile">Đăng
-                                    kí</a>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active " id="login-form" role="tabpanel"
-                                    aria-labelledby="list-home-list">
-                                    <form action="/login/email" method="post">
-                                        <div class="">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail-1">Email</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail-1"
-                                                    name="email" aria-describedby="emailHelp">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword-1">Password</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword-1"
-                                                    name="password">
-                                            </div>
-                                            <div class="form-group row justify-content-end">
-                                                <a href="#" class="">Quên mật khẩu?</a>
-                                            </div>
-                                            <button type="submit" class="chua-thoa-man xem-them w-75">Đăng nhập</button>
-                                            <button type="button" class="bo-qua w-75" id="cancel-1"
-                                                onclick="cancelFunc1()">Bỏ
-                                                qua</button>
-                                            <div id="my-signin2" class=''></div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="tab-pane fade" id="signin-form" role="tabpanel"
-                                    aria-labelledby="list-profile-list">
-                                    <form method="POST" action="/signup">
-                                        <div class="sm:w-1/2 px-3 mt-3 col-12 text-right">
-                                            <input type="text" placeholder="Email" name="email"
-                                                class="px-3 py-1 form-control text-success">
-                                        </div>
-                                        <div class="sm:w-1/2 px-3 mt-3 col-12">
-                                            <input type="text" placeholder="Password" name="password"
-                                                class="px-3 py-1  form-control text-success">
-                                        </div>
-                                        <div class="sm:w-1/2 px-3 mt-3 col-12 text-right">
-                                            <input type="text" placeholder="Retype Password" name="retype"
-                                                class="px-3 py-1  form-control text-success">
-                                        </div>
-                                        <button type="submit" class="xem-them w-75">Đăng kí</button>
-                                        <button type="button" class="bo-qua" id="cancel" onclick="cancelFunc()">Bỏ
-                                            qua</button>
-                                        <p class="text-center" style="font-size: 13px;">Bằng việc đăng kí bạn đã
-                                            đồng ý với các điều khoản bảo mật của chúng tôi</p>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 {{#if logedIn}}
                 <span class="li-nav">
                     <i class="fas fa-bell fa-lg"></i>
-                    <p class="chinh-p">THÔNG BÁO</p>
+                    <p class="my-0">THÔNG BÁO</p>
 
                     <div id="notification" class="fade-view bg-white">
                         Không có thông báo
@@ -293,7 +234,7 @@
                 <span class="li-nav position-relative">
                     <a href="/checkout/cart" class="text-center" style="color: orange;">
                         <i class="fas fa-cart-plus fa-lg"></i>
-                        <p class="chinh-p">
+                        <p class="my-0">
                             GIỎ HÀNG
                         </p>
                     </a>
@@ -347,7 +288,190 @@
         </div>
     </div>
 </div>
+-->
 
+<div class="bg-white px-3 py-2 d-md-none d-block" id="mobile-header">
+    <div class="d-flex align-items-center justify-content-between bg-white">
+        <a class="w-50" href="/home">
+            <img id="brand-img-small" class="img-fluid" src="./image/logo.png" alt="web-logo">
+        </a>
+        <p data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" class="my-0"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars fa-lg adcent-color"></i>
+        </p>
+    </div>
+    <div class="collapse" id="navbarTogglerDemo02">
+        <hr>
+        <div class="">
+            <div class="">
+                <p data-bs-toggle="collapse" data-bs-target="#category-1" class="text-center" aria-controls="category-1"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    Category
+                </p>
+                <div class="collapse" id="category-1">
+                    {{#each book}}
+                    <div class="">
+                        <a href="/category/{{this}}" class="tag-left">
+                            <p class="my-0">{{this}}</p>
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item text-center">
+                    <a class="nav-link active" aria-current="page" href="">Shop now</a>
+                </li>
+                <li class="nav-item text-center">
+                    <a class="nav-link" href="/checkout/cart">To Cart</a>
+                </li>
+                <li class="nav-item text-center">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+
+            <div class="my-2">
+                <p data-bs-toggle="collapse" data-bs-target="#sign-in-mobile" class="text-center"
+                    aria-controls="sign-in-mobile" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="adcent-bg-color text-white px-3 rounded py-2 adcent-border-color">
+                        Sign In
+                    </span>
+                </p>
+                <div class="collapse" id="sign-in-mobile">
+                    <form action="/login/email" method="post">
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                                name="email">
+                        </div>
+                        <div class="">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                                name="password">
+                        </div>
+                        <p class="text-center">
+                            <button class="btn adcent-bg-color text-white px-3 py-2 text-center my-2">
+                                Sign in
+                            </button>
+                        </p>
+
+                        <div class="d-flex justify-content-center flex-column">
+                            <div id="my-signin2"></div>
+                        </div>
+
+                        <p class="text-center">
+                            <small>
+                                <a href="../signup" class="">Đăng ký</a> nếu chưa bạn chưa có tài khoản
+                            </small>
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            <form action="/search/result" class="position-relative">
+                <input type="text" name="q" placeholder="Search" class="w-100 rounded py-2">
+                <button type="submit" class="btn position-absolute top-50 end-0" style="transform: translateY(-50%);">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="bg-white d-md-block d-none" id="pc-header">
+    <div class="container">
+        <div class="d-flex px-3 py-3 d-flex justify-content-between align-items-center">
+            <span class="w-25 px-5">
+                <a class='' href='/home'>
+                    <img id="brand-img-small" class="img-fluid" src="./image/logo.png" alt="web-logo">
+                </a>
+            </span>
+            <div class="">
+                <div class="">
+                    <a class='mx-2' href='/home'>
+                        Shop Now
+                    </a>
+                    <a class='mx-2' href='/checkout/cart'>
+                        To Cart
+                    </a>
+                    <span data-bs-toggle="collapse" data-bs-target="#pc-search" class="mx-2" aria-controls="pc-search"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        Search
+                    </span>
+                    <span data-bs-toggle="collapse" data-bs-target="#category" class="mx-2" aria-controls="category"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        Category
+                    </span>
+
+
+                    {{#unless logedIn}}
+                    <span data-bs-toggle="collapse" data-bs-target="#login-form"
+                        class="mx-2 adcent-bg-color text-white px-3 rounded py-2" aria-controls="category"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        Sign In
+                    </span>
+                    {{/unless}}
+
+                    {{#if logedIn}}
+                    <span class="position-relative">
+                        <a href="/checkout/cart" class="text-center" style="color: orange;">
+                            <i class="fas fa-cart-plus fa-lg"></i>
+                            <p class="my-0">
+                                GIỎ HÀNG
+                            </p>
+                        </a>
+                        <div class="position-absolute adcent-button p-2 rounded" style="right: 7%; top:-10%;">
+                            {{number}}
+                        </div>
+                    </span>
+                    <span data-bs-toggle="collapse" data-bs-target="#customer-info"
+                        class="mx-2 adcent-bg-color text-white px-3 rounded py-2 position-relative"
+                        aria-controls="customer-info" aria-expanded="false" aria-label="Toggle navigation">
+                        {{username}}
+                        <ul class="collapse position-absolute end-0 top-0" aria-labelledby="dropdownMenuLink"
+                            id="customer-info">
+                            <li class="bg-light"><a class="dropdown-item" href="./setup/edit">Cập nhật thông tin</a>
+                            </li>
+                            <hr>
+                            <li><a class="dropdown-item" href="/order">Lịch sử mua hàng</a></li>
+                            <hr>
+                            <li class="bg-light text-center fw-bolder">
+                                <button class="dropdown-item" type="button" form="form-logout"
+                                    onclick="logOutFunc()">Log
+                                    Out <i class="fas fa-sign-out-alt"></i></button>
+                            </li>
+                        </ul>
+                    </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="collapse home-bg-color" id="category">
+    <div class="container">
+        <div class="d-flex flex-wrap">
+            {{#each book}}
+            <div class="w-25 p-2 ">
+                <a href="/category/{{this}}" class="">
+                    <p class="adcent-color my-0">{{this}}</p>
+                </a>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+</div>
+<div class="collapse home-bg-color" id="pc-search">
+    <form action="/search/result" class="position-relative mx-auto w-50">
+        <input type="text" name="q" placeholder="Search" class="w-100 rounded py-2">
+        <button type="submit" class="btn position-absolute top-50 end-0" style="transform: translateY(-50%);">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+</div>
 
 <script>
     function signOut() {
