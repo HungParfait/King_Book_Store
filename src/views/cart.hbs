@@ -8,89 +8,113 @@
     Định dạng không hợp lệ!
 </div>
 
-{{#each user}}
-<div id="thanh-toan" class="thanh-toan row mt-3 mx-0 px-0">
-    <div class="col-lg-8 col-xs-12 mt-xs-3 bg-white">
-        <form action="/checkout/cart" method="post" id="form-thanh-toan">
-            <table class="table">
-                <thead>
-                    <tr class="fw-bolder">
-                        <th scope="col">
-                            <div class="form-check" id="select-all-div">
-                                <input class="form-check-input" type="checkbox" value="0" id="select-all"
-                                    checked="checked" onchange="checkedChange(event)">
-                                <label class="form-check-label mt-1" for="select-all">
-                                    Select
-                                </label>
-                            </div>
-                        </th>
-                        <th scope="col" class="text-center">Sản Phẩm</th>
-                        <th scope="col" class="text-center">Số Lượng</th>
-                        <th scope="col" colspan="2" class="text-center">Thành tiền</th>
-                    </tr>
-                </thead>
-                <tbody>
+<div class="collapse home-bg-color" id="category">
+    <div class="d-flex flex-wrap">
+        {{#each book}}
+        <div class="w-25 p-2 ">
+            <a href="/category/{{this}}" class="">
+                <p class=" adcent-color my-0">{{this}}</p>
+            </a>
+        </div>
+        {{/each}}
+    </div>
+</div>
 
-                    {{#each ../products }}
-                    <tr id="tr-{{this.id}}">
-                        <th scope="row">
-                            <div class="form-check align-self-center text-center">
-                                <input class="form-check-input" type="checkbox" value="1" id="{{this.id}}"
-                                    name="{{this.id}}" checked="checked">
+<div class="collapse home-bg-color" id="pc-search">
+    <form action="/search/result" class="position-relative mx-auto w-50">
+        <input type="text" name="q" placeholder="Search" class="w-100 rounded py-2">
+        <button type="submit" class="btn position-absolute top-50 end-0" style="transform: translateY(-50%);">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+</div>
+
+
+
+{{#each user}}
+<div class="row gx-0 mt-3">
+    <div class="col-12 col-lg-8 px-3 py-4 bg-white">
+        <p class="text-center adcent-color fw-bolder fs-5">Your Cart</p>
+        <div class="form-check" id="select-all-div">
+            <input class="form-check-input" type="checkbox" value="0" id="select-all" checked="checked"
+                onchange="checkedChange(event)">
+            <label class="form-check-label" for="select-all">
+                Select All
+            </label>
+        </div>
+        <hr>
+        <form action="/checkout/cart" method="post" id="form-thanh-toan" class="">
+            {{#each ../products }}
+            <div class="">
+                <div class="d-flex flex-lg-row flex-column">
+                    <div class="form-check my-2 me-lg-2 w-auto">
+                        <input class="form-check-input" type="checkbox" value="1" id="{{this.id}}" name="{{this.id}}"
+                            checked="checked">
+                        <label class="form-check-label" for="{{this.id}}">
+                            Mua Hàng
+                        </label>
+                    </div>
+                    <div class="row gx-0">
+                        <div class="col-10 row">
+                            <div class="col-4">
+                                <a href="/books/{{this.id}}" class="px-0">
+                                    <img src="{{this.image}}" class="img-fluid rounded">
+                                </a>
                             </div>
-                        </th>
-                        <td>
-                            <div id="ten-hang" class="">
-                                <a href="/books/{{this.id}}" class="row px-0">
-                                    <img src="//images.weserv.nl/?url={{this.image}}" class="mem-img-3 col-sm-4 col-10">
-                                    <p class="col-sm-8 col-12 fst-italic mem-text mx-0" style="color: red; font-weight: 700;">
+                            <div class="col-8">
+                                <a href="/books/{{this.id}}" class="px-0">
+                                    <p class="mem-text mx-0 text-capitalize fw-bolder">
                                         {{this.name}} -
                                         {{this.author}}
                                     </p>
                                 </a>
-                            </div>
-                        </td>
 
-                        <td>
-                            <div class="num-block skin-2 align-self-center">
-                                <div class="num-in" id="quantity-number-{{@index}}">
-                                    <span class="p-2 span-1" onclick="subtractProds('{{this.id}}',event)"><i
-                                            class="fas fa-minus"></i></span>
-                                    <input type="text" class="in-num w-25" value="{{this.quantity}}"
-                                        id="display-quantity-{{this.id}}" onkeypress="checkChangeQty(event,this.id)"
+                                <div class="" id="price-{{this.id}}"> <small class="fw-bolder me-3">Thành tiền:</small>
+                                    <small>$</small>{{this.price}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2 align-items-center d-flex flex-column">
+                            <div class="d-flex flex-lg-row flex-column align-items-center justify-content-center"
+                                id="quantity-number-{{@index}}">
+                                <div class="px-2 span-1 rounded bg-light" onclick="subtractProds('{{this.id}}',event)">
+                                    <i class="fas fa-minus"></i>
+                                </div>
+                                <div class="w-100 rounded mx-lg-2 my-1 my-lg-0 mx-sm-0 mx-0">
+                                    <input type="text text-center" class="rounded py-2 px-1 w-75 mx-auto d-block"
+                                        value="{{this.quantity}}" id="display-quantity-{{this.id}}"
+                                        onkeypress="checkChangeQty(event,this.id)"
                                         onpaste="checkChangeQty(event,this.id)" onchange="changeQty(this.value,event)">
-                                    <span class="p-2 span-2" onclick="addProds('{{this.id}}',event)"><i
-                                            class="fas fa-plus"></i></span>
+                                </div>
+                                <div class="px-2 span-2 bg-light rounded" onclick="addProds('{{this.id}}',event)">
+                                    <i class="fas fa-plus"></i>
                                 </div>
                             </div>
-                        </td>
-                        <td>
-                            <div id="thanh-tien" class="text-center mx-sm-4 mx-0">
-                                <div class="" style="width: 70px;">
-                                    <span class="fw-bolder d-block" id="price-{{this.id}}">{{this.price}}</span>
-                                    <div class="center d-none position-relative" id="noti-spinner-{{this.id}}">
-                                        <h1>Loading</h1>
-                                    </div>
+
+                            <button class="btn p-0 doi-mau text-center mt-3" type="button" onclick="submitFunc(this.id)"
+                                form="delete" style="font-size: 13px;" id="submit-{{this.id}}">
+                                Xóa
+                            </button>
+
+                            <div class="mt-3">
+                                <div class="center d-none position-relative" id="noti-spinner-{{this.id}}">
+                                    <h1>Loading</h1>
                                 </div>
-                                <button class="btn p-0 doi-mau" type="button" onclick="submitFunc(this.id)"
-                                    form="delete" style="font-size: 13px;" id="submit-{{this.id}}">
-                                    Xóa
-                                </button>
                             </div>
-                        </td>
-                    </tr>
-                    {{else}}
-                    <tr>
-                        <p class="text-center fst-italic mt-4">Giỏ hàng trống</p>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            {{else}}
+            <p class="text-center fst-italic mt-4">Giỏ hàng trống</p>
+            {{/each}}
         </form>
     </div>
-    <div class="position-relative col-lg-4 col-xs-8 mt-sm-0 mt-3">
+
+    <div class="d-none d-lg-block col-lg-4 position-relative ps-3">
         <div class="position-sticky" id="thanh-toan-khuyen-mai-1">
-            <div id="khuyen-mai" class="bg-white">
+            <div id="khuyen-mai" class="home-bg-color">
                 <div class="row bg-light mx-0 py-2">
                     <p class="col-6 fw-bold text-primary"><i class="fas fa-tags"></i> Khuyến mãi</p>
                     <div class="col-6 text-end fw-bold text-warning">Xem thêm <i class="fas fa-angle-right"></i>
@@ -101,7 +125,7 @@
                 </div>
             </div>
 
-            <div id="thanh-toan" class="bg-white p-3 mt-3">
+            <div id="thanh-toan" class="home-bg-color p-3 mt-3">
                 <div class="row">
                     <p class="col-6">Thành tiền</p>
                     <div class="col-6 text-end" id="amount-1">{{this.price}}</div>
@@ -113,8 +137,8 @@
                     <div class="col-6 text-end fw-bold text-warning" id="amount-2">{{this.priceTax}}</div>
                 </div>
 
-                <button type="submit" class="xem-them-2" style="font-size: 14px;" form="form-thanh-toan"
-                    id='pay-button'>
+                <button type="submit" class="adcent-button py-2 px-4 rounded-pill w-50 mx-auto d-block"
+                    style="font-size: 14px;" form="form-thanh-toan" id='pay-button'>
                     Thanh toán
                 </button>
             </div>
@@ -122,6 +146,45 @@
     </div>
 
 </div>
+
+<div class="fixed-bottom home-bg-color py-2 d-block d-lg-none adcent-color">
+    <div id="giam-gia-tag" class="home-bg-color collapse">
+        <div class="row bg-light mx-0 py-2">
+            <p class="col-6 fw-bold"><i class="fas fa-tags"></i> Khuyến mãi</p>
+            <div class="col-6 text-end fw-bold">Xem thêm <i class="fas fa-angle-right"></i>
+            </div>
+        </div>
+        <div class="text-center py-5">
+            Hiện tại chưa có giảm giá cho bạn
+        </div>
+        <hr>
+    </div>
+    <div class="d-flex no-wrap justify-content-evenly align-items-center">
+        <div class="p-1 d-flex align-items-center justify-content-center">
+            <i class="fas fa-angle-up color-change fa-lg mx-1"></i>
+            <p data-bs-toggle="collapse" data-bs-target="#giam-gia-tag" aria-controls="giam-gia-tag" class="my-0"
+                aria-expanded="false" aria-label="Toggle navigation">
+                Giảm giá
+            </p>
+        </div>
+
+        <div class="mx-1" id="total-money">
+            <span class='fs-6'>{{this.priceTax}}</span>
+            <span>$</span>
+        </div>
+
+        <button type="submit" class="adcent-bg-color text-white px-3 py-2 rounded" form="form-thanh-toan"
+            id='pay-button'>
+            Thanh toán
+        </button>
+    </div>
+</div>
+
 {{/each}}
+
+
+
+
+
 
 <script type="text/javascript" src="./javascript/validateAndDelete.js" lang="javascript"></script>

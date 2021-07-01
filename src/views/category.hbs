@@ -1,118 +1,256 @@
-<div class="category-row row">
-    <div class="col-12 col-sm-3 pe-sm-3 ps-sm-0 ">
-        <div class="filter p-sm-3 col-sm-12 bg-light px-5 mx-3 mx-sm-0" id="filter" style="font-size: 13px;">
-            <form action="/filter" method="post">
-                <div class="gia-tien">
-                    <h6 class=''>Giá</h6>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault1">
-                        <label class="form-check-label ms-1" for="flexRadioDefault1">
-                            0 - 10
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault2" checked>
-                        <label class="form-check-label ms-1" for="flexRadioDefault2">
-                            10 - 20
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault3">
-                        <label class="form-check-label ms-1" for="flexRadioDefault3">
-                            20 - 30
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault4" checked>
-                        <label class="form-check-label ms-1" for="flexRadioDefault4">
-                            30 - 40
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault5">
-                        <label class="form-check-label ms-1" for="flexRadioDefault5">
-                            40 - 50
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault6" checked>
-                        <label class="form-check-label ms-1" for="flexRadioDefault6">
-                            60 - 70
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault7">
-                        <label class="form-check-label ms-1" for="flexRadioDefault7">
-                            > 70
-                        </label>
-                    </div>
+<p data-bs-toggle="collapse" data-bs-target="#filter"
+    class="text-end py-2 adcent-color bg-white sticky-top d-block d-md-none" style="z-index:200" aria-controls="filter"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="adcent-border-color adcent-shadow py-2 px-3">
+        <span>Filters</span>
+        <i class="ms-3 fas fa-angle-down color-change"></i>
+    </span>
+</p>
+
+<div class="d-block d-md-none" style="z-index: 201;">
+    <div class="filter p-sm-3 position-fixed top-50 col-sm-12 home-bg-color px-5 collapse" id="filter"
+        style="font-size: 13px;transform: translateY(-40%);">
+        <form action="/filter" method="post" class="p-3 mx-sm-2 mx-md-3">
+            <div class="gia-tien row">
+                <h6 class='fw-bolder'>Giá</h6>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault1">
+                    <label class="form-check-label ms-1" for="flexRadioDefault1">
+                        0 - 10
+                    </label>
                 </div>
-                <hr>
-                <div class="hinh-thuc">
-                    <h6 class=''>Hình thức</h6>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="format" value='Paperback'
-                            id="flexRadioDefault8">
-                        <label class="form-check-label ms-1" for="flexRadioDefault8">
-                            Bìa Cứng
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="format" value='Hardback'
-                            id="flexRadioDefault9" checked>
-                        <label class="form-check-label ms-1" for="flexRadioDefault9">
-                            Bìa Mềm
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="format" value='Book' id="flexRadioDefault10">
-                        <label class="form-check-label ms-1" for="flexRadioDefault10">
-                            Đóng Hộp
-                        </label>
-                    </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault2" checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault2">
+                        10 - 20
+                    </label>
                 </div>
-                <hr>
-                <div class="ngon-ngu">
-                    <h6 class=''>Ngôn ngữ</h6>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="language" id="flexRadioDefault11" value="en"
-                            checked>
-                        <label class="form-check-label ms-1" for="flexRadioDefault11">
-                            Tiếng Anh
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="language" id="flexRadioDefault12" value="vi">
-                        <label class="form-check-label ms-1" for="flexRadioDefault12">
-                            Tiếng Việt
-                        </label>
-                    </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault3">
+                    <label class="form-check-label ms-1" for="flexRadioDefault3">
+                        20 - 30
+                    </label>
                 </div>
-                <hr>
-                <button type="submit" class="btn btn-warning mt-2 ">
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault4" checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault4">
+                        30 - 40
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault5">
+                    <label class="form-check-label ms-1" for="flexRadioDefault5">
+                        40 - 50
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault6" checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault6">
+                        60 - 70
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault7">
+                    <label class="form-check-label ms-1" for="flexRadioDefault7">
+                        > 70
+                    </label>
+                </div>
+            </div>
+            <hr>
+            <div class="hinh-thuc row">
+                <h6 class='fw-bolder'>Hình thức</h6>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="format" value='Paperback' id="flexRadioDefault8">
+                    <label class="form-check-label ms-1" for="flexRadioDefault8">
+                        Bìa Cứng
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="format" value='Hardback' id="flexRadioDefault9"
+                        checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault9">
+                        Bìa Mềm
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="format" value='Book' id="flexRadioDefault10">
+                    <label class="form-check-label ms-1" for="flexRadioDefault10">
+                        Đóng Hộp
+                    </label>
+                </div>
+            </div>
+            <hr>
+            <div class="ngon-ngu row">
+                <h6 class='fw-bolder'>Ngôn ngữ</h6>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="language" id="flexRadioDefault11" value="en"
+                        checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault11">
+                        Tiếng Anh
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="language" id="flexRadioDefault12" value="vi">
+                    <label class="form-check-label ms-1" for="flexRadioDefault12">
+                        Tiếng Việt
+                    </label>
+                </div>
+            </div>
+            <hr>
+            <button type="submit" class="btn adcent-bg-color text-white mt-2 ">
+                <span class="mx-4">
                     Lọc
-                    <i class="fas fa-chevron-right ml-2 text-sm"></i>
-                </button>
-            </form>
+                </span>
+                <i class="fas fa-chevron-right ms-2"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="adcent-color row mx-0 mt-md-3">
+
+    <div class="position-relative filter pe-sm-3 pb-3 ps-0 col-sm-3 mx-sm-0 d-none d-lg-block" style="font-size: 13px;">
+        <div class="position-sticky home-bg-color px-3" style="top: 50px;">
+            <form action="/filter" method="post" class="p-3 ">
+            <div class="gia-tien row">
+                <h6 class='fw-bolder'>Giá</h6>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault1">
+                    <label class="form-check-label ms-1" for="flexRadioDefault1">
+                        0 - 10
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault2" checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault2">
+                        10 - 20
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault3">
+                    <label class="form-check-label ms-1" for="flexRadioDefault3">
+                        20 - 30
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault4" checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault4">
+                        30 - 40
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault5">
+                    <label class="form-check-label ms-1" for="flexRadioDefault5">
+                        40 - 50
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault6" checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault6">
+                        60 - 70
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault7">
+                    <label class="form-check-label ms-1" for="flexRadioDefault7">
+                        > 70
+                    </label>
+                </div>
+            </div>
+            <hr>
+            <div class="hinh-thuc row">
+                <h6 class='fw-bolder'>Hình thức</h6>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="format" value='Paperback' id="flexRadioDefault8">
+                    <label class="form-check-label ms-1" for="flexRadioDefault8">
+                        Bìa Cứng
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="format" value='Hardback' id="flexRadioDefault9"
+                        checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault9">
+                        Bìa Mềm
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="format" value='Book' id="flexRadioDefault10">
+                    <label class="form-check-label ms-1" for="flexRadioDefault10">
+                        Đóng Hộp
+                    </label>
+                </div>
+            </div>
+            <hr>
+            <div class="ngon-ngu row">
+                <h6 class='fw-bolder'>Ngôn ngữ</h6>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="language" id="flexRadioDefault11" value="en"
+                        checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault11">
+                        Tiếng Anh
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="language" id="flexRadioDefault12" value="vi">
+                    <label class="form-check-label ms-1" for="flexRadioDefault12">
+                        Tiếng Việt
+                    </label>
+                </div>
+            </div>
+            <hr>
+            <button type="submit" class="btn adcent-bg-color text-white mt-2 ">
+                <span class="mx-4">
+                    Lọc
+                </span>
+                <i class="fas fa-chevron-right ms-2"></i>
+            </button>
+        </form>
         </div>
+        
     </div>
 
 
-    <div class="category bg-white col-sm-9 col-12 mx-0 mt-sm-0 mt-3">
+    <div class="category bg-white col-lg-9 col-12 mx-0 mt-sm-0 mt-3">
+        
+        <div class="mt-2">
+            <p class="fw-bolder fs-6 px-4">
+                {{categorys.0.category}}
+            </p>
+            <p class="px-4">
+                <small>
+                    Detail information is in the detail page. Let's explore!!!
+                </small>
+            </p>
+        </div>
         <div id="book-list" class="mx-0">
             {{#each categorys}}
             <div class="row-image-2">
                 <a href="/books/{{this._id}}">
-                    <img class="mem-img-new" src="//images.weserv.nl/?url={{this.image}}">
+                    <img class="mem-img-new rounded" src="//images.weserv.nl/?url={{this.image}}">
                 </a>
-                <p class="mem-text ten-sach">
+                <p class="mem-text ten-sach mt-2">
                     <a href="/books/{{this._id}}">{{this.name}}</a>
                 </p>
-                <div class="mem-text ten-tac-gia">{{this.author}}</div>
-                <div class="mem-text hinh-thuc">{{this.format}}</div>
-                <span class="mem-info">{{this.price}}{{this.currency}}</span>
-                <span
-                    class="mem-info text-secondary text-decoration-line-through mx-3 small">{{this.old_price}}{{this.currency}}</span>
+                <div class="mem-text ten-tac-gia text-capitalize">{{this.author}}</div>
+                <div class="mem-text ten-tac-gia text-capitalize">
+                    <small>
+                        {{this.category}}
+                    </small>
+                </div>
+                <div class="mem-text hinh-thuc text-capitalize">
+                    <small>
+                        {{this.format}}
+                    </small>
+                </div>
+                <div id="gia" class="gia-sach d-flex">
+                    <span id="gia-moi" class="gia-moi fs-5 adcent-color fw-bolder me-3">
+                        <small style="font-size: 0.9rem;">{{this.currency}}</small>{{this.price}}</span>
+                    <span id="gia-cu" class="gia-cu text-decoration-line-through">
+                        <small style="font-size: 0.8rem;">{{this.currency}}</small>{{this.old_price}}</span>
+                </div>
+                <div class="star-container">
+                    <input type="text" class="star" value='{{this.book_depository_stars}}'>
+                </div>
             </div>
             {{/each}}
         </div>
@@ -123,5 +261,110 @@
 
     </div>
 </div>
+
+
+
+<div class="home-bg-color px-2 py-3" id="mobile-footer">
+    <div class="w-50 mx-auto">
+        <a class='' href='/home'>
+            <img id="brand-img-small" class="img-fluid" src="./image/logo.png" alt="web-logo">
+        </a>
+    </div>
+
+    <hr>
+
+    <div class="d-flex justify-content-around align-items-center mt-3">
+        <p data-bs-toggle="collapse" data-bs-target="#contact-info" class="text-center adcent-color "
+            aria-controls="contact-info" aria-expanded="true" aria-label="Toggle navigation">
+            Thông tin <i class="fas fa-angle-down ms-1 color-change"></i>
+        </p>
+
+        <p data-bs-toggle="collapse" data-bs-target="#contact-icon" class="text-center adcent-color "
+            aria-controls="contact-icon" aria-expanded="true" aria-label="Toggle navigation">
+            Liên Hệ <i class="fas fa-angle-down ms-1 color-change"></i>
+        </p>
+        <p data-bs-toggle="collapse" data-bs-target="#contact-connect" class="text-center adcent-color "
+            aria-controls="contact-icon" aria-expanded="true" aria-label="Toggle navigation">
+            Đối Tác <i class="fas fa-angle-down ms-1 color-change"></i>
+        </p>
+    </div>
+    <div class="text-center">
+        <small>
+            Giấy chứng nhận kinh doanh số ...
+        </small>
+    </div>
+
+    <div class="collapse home-bg-color my-2" id="contact-icon">
+        <div class="d-flex justify-content-evenly">
+            <a href="#">
+                <i class="fab fa-facebook fa-lg"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-instagram fa-lg"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-youtube fa-lg"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-twitter fa-lg"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-pinterest fa-lg"></i>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="collapse home-bg-color my-2" id="contact-connect">
+        <div class="row mx-2">
+            <div class="col p-2">
+                <img src="https://www.fahasa.com/media/wysiwyg/Logo-NCC/ahamove_logo.png" class="img-fluid">
+            </div>
+            <div class="col p-2">
+                <img src="https://www.fahasa.com/media/wysiwyg/Logo-NCC/icon_giao_hang_nhanh.png" class="img-fluid">
+            </div>
+            <div class="col p-2">
+                <img src="https://www.fahasa.com/media/wysiwyg/Logo-NCC/icon_snappy.png" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="home-bg-color my-2 p-2 collapse" id="contact-info">
+        <div class="d-flex">
+            <div class="col-4">
+                <h6 class="text-secondary fw-bolder">DỊCH VỤ</h6>
+                <p>Điều khoản sử dụng</p>
+                <p>Giới thiệu King Book</p>
+                <p>Hệ thống trung tâm - nhà sách</p>
+                <p>Chính sách bảo mật</p>
+            </div>
+            <div class="col-4">
+                <h6 class="text-secondary fw-bolder">ĐỔI TRẢ - BẢO HÀNH</h6>
+                <p>Điều khoản sử dụng</p>
+                <p>Giới thiệu King Book</p>
+                <p>Hệ thống trung tâm - nhà sách</p>
+                <p>Chính sách bảo mật</p>
+            </div>
+            <div class="col-4">
+                <h6 class="text-secondary fw-bolder">TÀI KHOẢN CỦA TÔI</h6>
+                <p>Điều khoản sử dụng</p>
+                <p>Giới thiệu King Book</p>
+                <p>Hệ thống trung tâm - nhà sách</p>
+                <p>Chính sách bảo mật</p>
+            </div>
+        </div>
+        <div class="row">
+            <p class="col-lg col-12"><i class="fas fa-map-marker-alt"></i> 60-62 Lê Lợi, Q.1, TP. HCM</p>
+            <p class="col-lg col-12" style="word-wrap: break-word"><i class="fas fa-envelope"></i>
+                nguyenduchung1372@gmail.com</p>
+            <p class="col-lg col-12"><i class="fas fa-phone"></i> 0124845411</p>
+        </div>
+    </div>
+
+
+</div>
+
+
 
 <script type="text/javascript" src="./javascript/pagination.js" lang="javascript"></script>

@@ -1,118 +1,396 @@
-<div class="category-row row">
-    <div class="col-12 col-sm-3 pe-sm-3 ps-sm-0 ">
-        <div class="filter p-sm-3 col-sm-12 bg-light px-5 mx-3 mx-sm-0" id="filter" style="font-size: 13px;">
-            <form action="/filter" method="post">
-                <div class="gia-tien">
-                    <h6 class=''>Giá</h6>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault1">
-                        <label class="form-check-label ms-1" for="flexRadioDefault1">
-                            0 - 10
-                        </label>
+<div class="bg-white px-3 py-2 d-md-none d-block" id="mobile-header">
+    <div class="d-flex align-items-center justify-content-between">
+        <a class="w-50" href="/home">
+            <img id="brand-img-small" class="img-fluid" src="./image/logo.png" alt="web-logo">
+        </a>
+        <p data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" class="my-0"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars fa-lg adcent-color"></i>
+        </p>
+    </div>
+    <div class="collapse" id="navbarTogglerDemo02">
+        <hr>
+        <div class="">
+            <div class="">
+                <p data-bs-toggle="collapse" data-bs-target="#category" class="text-center" aria-controls="category"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    Category
+                </p>
+                <div class="collapse" id="category">
+                    {{#each book}}
+                    <div class="">
+                        <a href="/category/{{this}}" class="tag-left">
+                            <p class="my-0">{{this}}</p>
+                            <i class="fas fa-angle-right"></i>
+                        </a>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault2" checked>
-                        <label class="form-check-label ms-1" for="flexRadioDefault2">
-                            10 - 20
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault3">
-                        <label class="form-check-label ms-1" for="flexRadioDefault3">
-                            20 - 30
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault4" checked>
-                        <label class="form-check-label ms-1" for="flexRadioDefault4">
-                            30 - 40
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault5">
-                        <label class="form-check-label ms-1" for="flexRadioDefault5">
-                            40 - 50
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault6" checked>
-                        <label class="form-check-label ms-1" for="flexRadioDefault6">
-                            60 - 70
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="price" id="flexRadioDefault7">
-                        <label class="form-check-label ms-1" for="flexRadioDefault7">
-                            > 70
-                        </label>
-                    </div>
+                    {{/each}}
                 </div>
-                <hr>
-                <div class="hinh-thuc">
-                    <h6 class=''>Hình thức</h6>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="format" value='Paperback'
-                            id="flexRadioDefault8">
-                        <label class="form-check-label ms-1" for="flexRadioDefault8">
-                            Bìa Cứng
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="format" value='Hardback'
-                            id="flexRadioDefault9" checked>
-                        <label class="form-check-label ms-1" for="flexRadioDefault9">
-                            Bìa Mềm
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="format" value='Book' id="flexRadioDefault10">
-                        <label class="form-check-label ms-1" for="flexRadioDefault10">
-                            Đóng Hộp
-                        </label>
-                    </div>
+            </div>
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item text-center">
+                    <a class="nav-link active" aria-current="page" href="">Shop now</a>
+                </li>
+                <li class="nav-item text-center">
+                    <a class="nav-link" href="/checkout/cart">To Cart</a>
+                </li>
+                <li class="nav-item text-center">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+
+            <div class="my-2">
+                <p data-bs-toggle="collapse" data-bs-target="#sign-in-mobile" class="text-center"
+                    aria-controls="sign-in-mobile" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="adcent-bg-color text-white px-3 rounded py-2 adcent-border-color">
+                        Sign In
+                    </span>
+                </p>
+                <div class="collapse" id="sign-in-mobile">
+                    <form action="/login/email" method="post">
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                                name="email">
+                        </div>
+                        <div class="">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                                name="password">
+                        </div>
+                        <p class="text-center">
+                            <button class="btn adcent-bg-color text-white px-3 py-2 text-center my-2">
+                                Sign in
+                            </button>
+                        </p>
+
+                        <div class="d-flex justify-content-center flex-column">
+                            <div id="my-signin2"></div>
+                        </div>
+
+                        <p class="text-center">
+                            <small>
+                                <a href="../signup" class="">Đăng ký</a> nếu chưa bạn chưa có tài khoản
+                            </small>
+                        </p>
+                    </form>
                 </div>
-                <hr>
-                <div class="ngon-ngu">
-                    <h6 class=''>Ngôn ngữ</h6>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="language" id="flexRadioDefault11" value="en"
-                            checked>
-                        <label class="form-check-label ms-1" for="flexRadioDefault11">
-                            Tiếng Anh
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="language" id="flexRadioDefault12" value="vi">
-                        <label class="form-check-label ms-1" for="flexRadioDefault12">
-                            Tiếng Việt
-                        </label>
-                    </div>
-                </div>
-                <hr>
-                <button type="submit" class="btn btn-warning mt-2 ">
-                    Lọc
-                    <i class="fas fa-chevron-right ml-2 text-sm"></i>
+            </div>
+
+            <form action="/search/result" class="position-relative">
+                <input type="text" name="q" placeholder="Search" class="w-100 rounded py-2">
+                <button type="submit" class="btn position-absolute top-50 end-0" style="transform: translateY(-50%);">
+                    <i class="fas fa-search"></i>
                 </button>
             </form>
         </div>
+
+    </div>
+</div>
+
+<div class="bg-white d-md-block d-none" id="pc-header">
+    <div class="d-flex px-3 py-3 d-flex justify-content-between align-items-center">
+        <span class="w-25 px-5">
+            <a class='' href='/home'>
+                <img id="brand-img-small" class="img-fluid" src="./image/logo.png" alt="web-logo">
+            </a>
+        </span>
+        <div class="">
+            <div class="">
+                <a class='mx-2' href='/home'>
+                    Shop Now
+                </a>
+                <a class='mx-2' href='/home'>
+                    To Cart
+                </a>
+                <span data-bs-toggle="collapse" data-bs-target="#pc-search" class="mx-2" aria-controls="pc-search"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    Search
+                </span>
+                <span data-bs-toggle="collapse" data-bs-target="#category" class="mx-2" aria-controls="category"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    Category
+                </span>
+                <span data-bs-toggle="collapse" data-bs-target="#category"
+                    class="mx-2 adcent-bg-color text-white px-3 rounded py-2" aria-controls="category"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    Sign In
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="collapse home-bg-color" id="category">
+    <div class="d-flex flex-wrap">
+        {{#each book}}
+        <div class="w-25 p-2 ">
+            <a href="/category/{{this}}" class="">
+                <p class=" adcent-color my-0">{{this}}</p>
+            </a>
+        </div>
+        {{/each}}
+    </div>
+</div>
+<div class="collapse home-bg-color" id="pc-search">
+    <form action="/search/result" class="position-relative mx-auto w-50">
+        <input type="text" name="q" placeholder="Search" class="w-100 rounded py-2">
+        <button type="submit" class="btn position-absolute top-50 end-0" style="transform: translateY(-50%);">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+</div>
+
+<p data-bs-toggle="collapse" data-bs-target="#filter"
+    class="text-end py-2 adcent-color bg-white sticky-top d-block d-lg-none" style="z-index:200" aria-controls="filter"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="adcent-border-color adcent-shadow py-2 px-3">
+        <span>Filters</span>
+        <i class="ms-3 fas fa-angle-down"></i>
+    </span>
+</p>
+
+
+<div class="d-block d-md-none">
+    <div class="filter p-sm-3 position-fixed top-50 col-sm-12 home-bg-color px-5 collapse" id="filter"
+        style="font-size: 13px;transform: translateY(-40%);">
+        <form action="/filter" method="post" class="p-3 ">
+            <div class="gia-tien row">
+                <h6 class='fw-bolder'>Giá</h6>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault1">
+                    <label class="form-check-label ms-1" for="flexRadioDefault1">
+                        0 - 10
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault2" checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault2">
+                        10 - 20
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault3">
+                    <label class="form-check-label ms-1" for="flexRadioDefault3">
+                        20 - 30
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault4" checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault4">
+                        30 - 40
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault5">
+                    <label class="form-check-label ms-1" for="flexRadioDefault5">
+                        40 - 50
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault6" checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault6">
+                        60 - 70
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault7">
+                    <label class="form-check-label ms-1" for="flexRadioDefault7">
+                        > 70
+                    </label>
+                </div>
+            </div>
+            <hr>
+            <div class="hinh-thuc row">
+                <h6 class='fw-bolder'>Hình thức</h6>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="format" value='Paperback' id="flexRadioDefault8">
+                    <label class="form-check-label ms-1" for="flexRadioDefault8">
+                        Bìa Cứng
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="format" value='Hardback' id="flexRadioDefault9"
+                        checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault9">
+                        Bìa Mềm
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="format" value='Book' id="flexRadioDefault10">
+                    <label class="form-check-label ms-1" for="flexRadioDefault10">
+                        Đóng Hộp
+                    </label>
+                </div>
+            </div>
+            <hr>
+            <div class="ngon-ngu row">
+                <h6 class='fw-bolder'>Ngôn ngữ</h6>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="language" id="flexRadioDefault11" value="en"
+                        checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault11">
+                        Tiếng Anh
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="language" id="flexRadioDefault12" value="vi">
+                    <label class="form-check-label ms-1" for="flexRadioDefault12">
+                        Tiếng Việt
+                    </label>
+                </div>
+            </div>
+            <hr>
+            <button type="submit" class="btn adcent-bg-color text-white mt-2 ">
+                <span class="mx-4">
+                    Lọc
+                </span>
+                <i class="fas fa-chevron-right ms-2"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+
+<div class="row mt-md-3 mx-0">
+    <div class="filter pe-sm-3 pb-3 ps-0 col-sm-3 mx-sm-0 d-none d-lg-block" style="font-size: 13px;">
+        <div class="position-sticky home-bg-color px-3" style="top: 30px;">
+            <form action="/filter" method="post" class="p-3 ">
+            <div class="gia-tien row">
+                <h6 class='fw-bolder'>Giá</h6>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault1">
+                    <label class="form-check-label ms-1" for="flexRadioDefault1">
+                        0 - 10
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault2" checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault2">
+                        10 - 20
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault3">
+                    <label class="form-check-label ms-1" for="flexRadioDefault3">
+                        20 - 30
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault4" checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault4">
+                        30 - 40
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault5">
+                    <label class="form-check-label ms-1" for="flexRadioDefault5">
+                        40 - 50
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault6" checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault6">
+                        60 - 70
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="price" id="flexRadioDefault7">
+                    <label class="form-check-label ms-1" for="flexRadioDefault7">
+                        > 70
+                    </label>
+                </div>
+            </div>
+            <hr>
+            <div class="hinh-thuc row">
+                <h6 class='fw-bolder'>Hình thức</h6>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="format" value='Paperback' id="flexRadioDefault8">
+                    <label class="form-check-label ms-1" for="flexRadioDefault8">
+                        Bìa Cứng
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="format" value='Hardback' id="flexRadioDefault9"
+                        checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault9">
+                        Bìa Mềm
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="format" value='Book' id="flexRadioDefault10">
+                    <label class="form-check-label ms-1" for="flexRadioDefault10">
+                        Đóng Hộp
+                    </label>
+                </div>
+            </div>
+            <hr>
+            <div class="ngon-ngu row">
+                <h6 class='fw-bolder'>Ngôn ngữ</h6>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="language" id="flexRadioDefault11" value="en"
+                        checked>
+                    <label class="form-check-label ms-1" for="flexRadioDefault11">
+                        Tiếng Anh
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="language" id="flexRadioDefault12" value="vi">
+                    <label class="form-check-label ms-1" for="flexRadioDefault12">
+                        Tiếng Việt
+                    </label>
+                </div>
+            </div>
+            <hr>
+            <button type="submit" class="btn adcent-bg-color text-white mt-2 ">
+                <span class="mx-4">
+                    Lọc
+                </span>
+                <i class="fas fa-chevron-right ms-2"></i>
+            </button>
+        </form>
+        </div>
+        
     </div>
 
-
-    <div class="category bg-white col-sm-9 col-12 mx-0 mt-sm-0 mt-3">
+    <div class="bg-white col-lg-9 col-12 mx-0 mt-sm-0 mt-3">
+        <div class="mt-2">
+            <p class="fw-bolder fs-6 px-4">
+                Search Result
+            </p>
+            <p class="px-4">
+                <small>
+                    Detail information is in the detail page. Let's explore!!!
+                </small>
+            </p>
+        </div>
         <div id="book-list" class="mx-0">
             {{#each names}}
             <div class="row-image-2">
                 <a href="/books/{{this._id}}">
-                    <img class="mem-img-new" src="//images.weserv.nl/?url={{this.image}}">
+                    <img class="mem-img-new rounded" src="//images.weserv.nl/?url={{this.image}}">
                 </a>
-                <p class="mem-text ten-sach">
+                <p class="mem-text ten-sach mt-2">
                     <a href="/books/{{this._id}}">{{this.name}}</a>
                 </p>
-                <div class="mem-text ten-tac-gia">{{this.author}}</div>
-                <div class="mem-text hinh-thuc">{{this.format}}</div>
-                <span class="mem-info">{{this.price}}{{this.currency}}</span>
-                <span
-                    class="mem-info text-secondary text-decoration-line-through mx-3 small">{{this.old_price}}{{this.currency}}</span>
+                <div class="mem-text ten-tac-gia text-capitalize">{{this.author}}</div>
+                <div class="mem-text ten-tac-gia text-capitalize">
+                    <small>
+                        {{this.category}}
+                    </small>
+                </div>
+                <div class="mem-text hinh-thuc text-capitalize">
+                    <small>
+                        {{this.format}}
+                    </small>
+                </div>
+                <div id="gia" class="gia-sach d-flex">
+                    <span id="gia-moi" class="gia-moi fs-5 adcent-color fw-bolder me-3">
+                        <small style="font-size: 0.9rem;">{{this.currency}}</small>{{this.price}}</span>
+                    <span id="gia-cu" class="gia-cu text-decoration-line-through">
+                        <small style="font-size: 0.8rem;">{{this.currency}}</small>{{this.old_price}}</span>
+                </div>
+                <div class="star-container">
+                    <input type="text" class="star-no-caption" value='{{this.book_depository_stars}}'>
+                </div>
             </div>
             {{/each}}
         </div>
