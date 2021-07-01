@@ -1,0 +1,35 @@
+.my-carousel-item .item-1 {
+	position: absolute;
+	left:0%;
+	z-index: 3;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.my-carousel-item .item {
+	opacity: 0.8;
+}
+
+.my-carousel-item .item-2 {
+	position: absolute;
+	right: 0%;
+	top: 50%;
+	z-index: 3;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.my-carousel-item .item.active-item {
+	position: relative;
+	opacity: 1;
+	width: 80%;
+	margin: 0 auto;
+	z-index: 4;
+}
+
+.my-carousel-item .item.transition {
+	-webkit-transition: all 0.35s ease;
+	-moz-transition: all 0.35s ease;
+	-o-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+}
