@@ -68,7 +68,7 @@ $(document).scroll(function () {
     var y = $(this).scrollTop();
     $('.hook-effect').each(function () {
         var t = $(this).offset().top;
-        if (y > t-600) {
+        if (y > t-800) {
             $(this).animate({top: '0px'})
         }
     })
@@ -85,6 +85,13 @@ $(document).scroll(function () {
         if (y > t-400) {
             $(this).fadeIn();
             $(this).animate({right: '0px', opacity: '1'},'slow')   
+        }
+    });
+    $('#block-2 .row-image-1').each(function () {
+        var t = $(this).parent().offset().top;
+        if (y > t-400) {
+            $(this).fadeIn();
+            $(this).animate({left: '0px', opacity: '1'},'slow')   
         }
     });
 });
