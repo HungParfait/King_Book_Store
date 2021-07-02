@@ -8,29 +8,6 @@
     Định dạng không hợp lệ!
 </div>
 
-<div class="collapse home-bg-color" id="category">
-    <div class="d-flex flex-wrap">
-        {{#each book}}
-        <div class="w-25 p-2 ">
-            <a href="/category/{{this}}" class="">
-                <p class=" adcent-color my-0">{{this}}</p>
-            </a>
-        </div>
-        {{/each}}
-    </div>
-</div>
-
-<div class="collapse home-bg-color" id="pc-search">
-    <form action="/search/result" class="position-relative mx-auto w-50">
-        <input type="text" name="q" placeholder="Search" class="w-100 rounded py-2">
-        <button type="submit" class="btn position-absolute top-50 end-0" style="transform: translateY(-50%);">
-            <i class="fas fa-search"></i>
-        </button>
-    </form>
-</div>
-
-
-
 {{#each user}}
 <div class="row gx-0 mt-3">
     <div class="col-12 col-lg-8 px-3 py-4 bg-white">
