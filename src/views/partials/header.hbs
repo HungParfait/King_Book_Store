@@ -1,295 +1,3 @@
-<!--
-<div class="">
-    <div class="bg-warning" id="small-nav">
-        <div class="top-nav-small d-flex justify-content-between">
-            <span>
-                <a class='' href='/home'>
-                    <img id="brand-img-small" class="mem-img-small" src="./image/logo.png" alt="web-logo">
-                </a>
-            </span>
-
-            <i class="fas fa-search text-white" onclick="displayHorizontal('search-header')"></i>
-
-            <i class="fas fa-bars text-white fa-lg" onclick="displayHorizontal('small-mover-father')"></i>
-
-            {{#unless logedIn}}
-            <span class="text-center">
-                <a class='fs-5' href='#'>
-                    <i class="fas fa-cart-plus text-white"></i>
-                </a>
-            </span>
-            <span class="text-center" id="log-in">
-                <a class='fs-5' href='#'>
-                    <i class="far fa-user text-white"></i>
-                </a>
-            </span>
-
-            <div class="hien-thi" id="login-area">
-                <div class="dep bg-white w-100">
-                    <div class="" style="margin-bottom: 20px;">
-                        <div class="list-group list-group-horizontal" id="list-login" role="tablist">
-                            <a class="list-group-item list-group-item-action active login-animation" id="login-login"
-                                data-toggle="list" href="#login-form" role="tab" aria-controls="home">Đăng
-                                nhập</a>
-                            <a class="list-group-item list-group-item-action login-animation" id="signin-signin"
-                                data-toggle="list" href="#signin-form" role="tab" aria-controls="profile">Đăng
-                                kí</a>
-                        </div>
-                    </div>
-                    <div class="">
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active " id="login-form" role="tabpanel"
-                                aria-labelledby="list-home-list">
-                                <form action="/login/email" method="post">
-                                    <div class="">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail-1">Email</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail-1"
-                                                name="email" aria-describedby="emailHelp">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword-1">Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword-1"
-                                                name="password">
-                                        </div>
-                                        <div class="form-group row justify-content-end">
-                                            <a href="#" class="">Quên mật khẩu?</a>
-                                        </div>
-                                        <button type="submit" class="chua-thoa-man xem-them w-50">Đăng nhập</button>
-                                        <button type="button" class="bo-qua w-50" id="cancel-1"
-                                            onclick="cancelFunc()">Bỏ
-                                            qua</button>
-                                        <div class="w-50 mx-auto d-flex justify-content-center">
-                                            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-                                        </div>
-
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="tab-pane fade" id="signin-form" role="tabpanel"
-                                aria-labelledby="list-profile-list">
-                                <form method="POST" action="/signup">
-                                    <div class="sm:w-1/2 px-3 mt-3 col-12 text-right">
-                                        <input type="text" placeholder="Email" name="email"
-                                            class="px-3 py-1 form-control text-success">
-                                    </div>
-                                    <div class="sm:w-1/2 px-3 mt-3 col-12">
-                                        <input type="text" placeholder="Password" name="password"
-                                            class="px-3 py-1  form-control text-success">
-                                    </div>
-                                    <div class="sm:w-1/2 px-3 mt-3 col-12 text-right">
-                                        <input type="text" placeholder="Retype Password" name="retype"
-                                            class="px-3 py-1  form-control text-success">
-                                    </div>
-                                    <button type="submit" class="xem-them w-75">Đăng kí</button>
-                                    <button type="button" class="bo-qua" id="cancel" onclick="cancelFunc()">Bỏ
-                                        qua</button>
-                                    <p class="text-center" style="font-size: 13px;">Bằng việc đăng kí bạn đã
-                                        đồng ý với các điều khoản bảo mật của chúng tôi</p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{/unless}}
-
-            {{#if logedIn}}
-            <span class="position-relative">
-                <a href="/checkout/cart" class="text-center text-white fs-5">
-                    <i class="fas fa-cart-plus"></i>
-                </a>
-                <div class="position-absolute text-white fw-bold rounded-circle border border-white px-1"
-                    style="right: -30%; top:-10%;">
-                    {{number}}
-                </div>
-            </span>
-
-            <span class="" id="">
-                <div class="dropdown position-relative" style="left: 30px">
-                    <a class="dropdown-toggle fs-5" href="#" role="button" id="dropdownMenuLink"
-                        data-bs-toggle="dropdown" aria-expanded="false" style="color: orange;">
-                        <i class="far fa-user text-white"></i>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li class="bg-light"><a class="dropdown-item" href="./setup/edit">Cập nhật thông tin</a>
-                        </li>
-                        <hr>
-                        <li><a class="dropdown-item" href="/order">Lịch sử mua hàng</a></li>
-                        <hr>
-                        <li class="bg-light text-center fw-bolder">
-                            <button class="dropdown-item" type="button" form="form-logout" onclick="logOutFunc()">Log
-                                Out <i class="fas fa-sign-out-alt"></i></button>
-                        </li>
-                    </ul>
-                </div>
-            </span>
-            {{/if}}
-        </div>
-
-        <div id="search-header" class="d-flex p-2">
-            <form action="/search/result" id="" class="w-75">
-                <input type="text" name="q" placeholder="Search" class="w-100 rounded px-2"
-                    style="border: none!important;outline: none!important;display: none">
-                <button type="submit" class="btn fs-6 ms-n5">
-                    <i class="fas fa-search text-warning"></i>
-                </button>
-            </form>
-            <div class="w-25">
-                <i class="fas fa-times fa-lg" onclick="cancel()"></i>
-            </div>
-        </div>
-
-
-        <div id="small-mover-father">
-            <div id='small-mover' class="small-mover-effect bg-white">
-                <img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/default.svg">
-                <img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/english.svg">
-                <p>DANH MỤC SẢN PHẨM
-                    <i class="fas fa-times fa-lg" onclick="cancel('small-mover-father')"></i>
-                </p>
-
-                {{#each book}}
-                <div class="">
-                    <a href="/category/{{this}}" class="tag-left">
-                        <p class="my-0">{{this}}</p>
-                        <i class="fas fa-angle-right"></i>
-                    </a>
-                </div>
-                {{/each}}
-            </div>
-        </div>
-    </div>
-    <script>
-        function displayHorizontal(id) {
-            let smallMover = document.getElementById(id);
-            smallMover.style.display = 'block';
-        }
-
-        function cancel(id) {
-            let cancel = document.getElementById(id);
-            let body = document.getElementsByTagName('body');
-            body[0].style.position = 'inherit';
-            cancel.style.display = 'none';
-
-        }
-    </script>
-
-
-    <div class="bg-white" id="big-nav">
-        <div class="header-nav bg-white container-custom">
-            <a class="brand-img" href="/home">
-                <img id="brand-img" class="mem-img" src="./image/logo.png" alt="web-logo">
-            </a>
-
-            <form action="/search/result" id="search-top">
-                <input type="text" name="q" placeholder="Search" class="search-form">
-                <span class="left-shift" id="search-icon">
-                    <button type="submit">
-                        <i class="fas fa-search fa-lg text-warning"></i>
-                    </button>
-                </span>
-
-            </form>
-            <div class="" id="nav-icon">
-                {{#unless logedIn}}
-                <span class="li-nav">
-
-                    <i class="fas fa-bell fa-lg"></i>
-                    <p class="my-0">THÔNG BÁO</p>
-
-                    <div id="notification" class="fade-view bg-white">
-                        <i class="fas fa-user-friends fa-5x" style="color: blue;position: absolute; ;left:33%"></i>
-                        <p style="text-align: center;color: #333333;margin-top: 75px;">Vui lòng đăng nhặp để xem
-                            thông báo</p>
-                        <p class="xem-them-1">Đăng nhập</p>
-                        <p class="xem-them-1">Đăng Ký</p>
-                    </div>
-                </span>
-                <span class="li-nav">
-                    <i class="fas fa-cart-plus fa-lg"></i>
-                    <p class="my-0">GIỎ HÀNG</p>
-                    <div id="cart" class="fade-view bg-white">
-                        <p style="text-align: center;color: #333333;">Bạn cần đăng nhập để xem giỏ hàng</p>
-                        <p style="text-align: center;color: #333333;">Số tiền thanh toán <span>0</span> đ</p>
-                    </div>
-
-                </span>
-                <span class="li-nav" id="log-in-1">
-                    <i class="fas fa-sign-in-alt fa-lg"></i>
-                    <p class="my-0">ĐĂNG NHẬP</p>
-                </span>
-                {{/unless}}
-
-                {{#if logedIn}}
-                <span class="li-nav">
-                    <i class="fas fa-bell fa-lg"></i>
-                    <p class="my-0">THÔNG BÁO</p>
-
-                    <div id="notification" class="fade-view bg-white">
-                        Không có thông báo
-                    </div>
-                </span>
-                <span class="li-nav position-relative">
-                    <a href="/checkout/cart" class="text-center" style="color: orange;">
-                        <i class="fas fa-cart-plus fa-lg"></i>
-                        <p class="my-0">
-                            GIỎ HÀNG
-                        </p>
-                    </a>
-                    <div class="position-absolute text-warning fw-bold rounded-circle border border-warning px-1"
-                        style="right: 7%; top:-10%;">
-                        {{number}}
-                    </div>
-                </span>
-                <span class="li-nav" id="">
-                    <i class="fas fa-user-tie"></i>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                            data-bs-toggle="dropdown" aria-expanded="false" style="color: orange;">
-                            {{username}}
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li class="bg-light"><a class="dropdown-item" href="./setup/edit">Cập nhật thông tin</a>
-                            </li>
-                            <hr>
-                            <li><a class="dropdown-item" href="/order">Lịch sử mua hàng</a></li>
-                            <hr>
-                            <li class="bg-light text-center fw-bolder">
-                                <button class="dropdown-item" type="button" form="form-logout"
-                                    onclick="logOutFunc()">Log Out <i class="fas fa-sign-out-alt"></i></button>
-                            </li>
-                        </ul>
-                    </div>
-                </span>
-                {{/if}}
-
-
-                <span class="" id="flag-language">
-                    <div>
-                        <img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/default.svg">
-                        <span><i class="fas fa-angle-down"></i></span>
-                    </div>
-                    <div id="flag" class="fade-view bg-white">
-                        <div id="tieng-Viet" class="">
-                            <img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/default.svg"
-                                class="">
-                            <small>Vietnamese</small>
-                            <i class="fas fa-check text-warning" id="co-VN"></i>
-                        </div>
-                        <div id="tieng-Anh" class="">
-                            <img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/english.svg">
-                            <small>English</small>
-                            <i class="fas fa-check text-warning" style="display: none" id="co-Anh"></i>
-                        </div>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
--->
-
 <div class="bg-white px-3 py-2 d-md-none d-block" id="mobile-header">
     <div class="d-flex align-items-center justify-content-between bg-white">
         <a class="w-50" href="/home">
@@ -386,20 +94,20 @@
                 <span>{{username}}</span>
             </span>
             <div class="collapse home-bg-color rounded p-3" aria-labelledby="dropdownMenuLink" id="customer-info"
-                    style="z-index: 200;">
-                    <div class="bg-white text-center"><a class="" href="./setup/edit">Cập nhật
-                            thông tin</a>
-                    </div>
-                    <hr>
-                    <div class="bg-white text-center"><a class="" href="/order">Lịch sử mua
-                            hàng</a>
-                    </div>
-                    <hr>
-                    <div class="text-center fw-bolder bg-white">
-                        <button class="dropdown-item" type="button" form="form-logout" onclick="logOutFunc()">Log
-                            Out <i class="fas fa-sign-out-alt"></i></button>
-                    </div>
+                style="z-index: 200;">
+                <div class="bg-white text-center"><a class="" href="./setup/edit">Cập nhật
+                        thông tin</a>
                 </div>
+                <hr>
+                <div class="bg-white text-center"><a class="" href="/order">Lịch sử mua
+                        hàng</a>
+                </div>
+                <hr>
+                <div class="text-center fw-bolder bg-white">
+                    <button class="dropdown-item" type="button" form="form-logout" onclick="logOutFunc()">Log
+                        Out <i class="fas fa-sign-out-alt"></i></button>
+                </div>
+            </div>
             {{/if}}
 
 
@@ -415,7 +123,7 @@
 </div>
 
 <div class="bg-white d-md-block d-none" id="pc-header">
-    <div class="container">
+    <div class="container-custom">
         <div class="d-flex px-3 py-3 d-flex justify-content-between align-items-center">
             <span class="w-25 px-5">
                 <a class='' href='/home'>
@@ -424,9 +132,9 @@
             </span>
             <div class="">
                 <div class="">
-                    <a class='mx-2 adcent-color' href='/home'>
+                    <span class='mx-2 adcent-color' onclick="scrollToElement('block-2')">
                         Shop Now
-                    </a>
+                    </span>
                     <a class='mx-2 adcent-color' href='/checkout/cart'>
                         To Cart
                     </a>
@@ -441,16 +149,16 @@
 
 
                     {{#unless logedIn}}
-                    <span data-bs-toggle="collapse" data-bs-target="#login-form-container"
+                    <span onclick="display('login-form-container')"
                         class="mx-2 adcent-bg-color text-white px-3 rounded py-2" aria-controls="category"
                         aria-expanded="false" aria-label="Toggle navigation">
                         Sign In
                     </span>
                     {{/unless}}
 
-                    <div class="collapse" id="login-form-container">
-                        <div class="bg-white py-5 position-absolute start-50 top-50"
-                            style="transform: translate(-50%,-50%); top: 50px;">
+                    <div class="hien-thi" id="login-form-container" style="z-index: 500;">
+                        <div class="bg-white py-5 position-absolute start-50 top-50 rounded"
+                            style="transform: translate(-50%,-50%);">
                             <div class="">
                                 <div class="list-group list-group-horizontal justify-content-center" id="list-login"
                                     role="tablist">
@@ -477,35 +185,28 @@
                                                     <input type="password" class="form-control" id="floatingPassword"
                                                         placeholder="Password" name="password">
                                                 </div>
-                                                <p class="text-center">
+                                                <p class="text-center my-3">
                                                     <button
-                                                        class="btn adcent-bg-color text-white px-3 py-2 text-center my-2">
+                                                        class="btn adcent-bg-color text-white px-4 py-2 text-center">
                                                         Sign in
                                                     </button>
                                                 </p>
 
-                                                <div data-bs-toggle="collapse" data-bs-target="#login-form-container"
-                                                    class="my-2 text-center" aria-controls="#login-form-container"
-                                                    aria-expanded="false" aria-label="Toggle navigation">
-                                                    <span class="adcent-button px-3 rounded py-2 text-center my-2">
+                                                <div class="text-center mt-3 mb-3"
+                                                    onclick="deDisplay('login-form-container')">
+                                                    <span class="adcent-button px-4 rounded py-2 text-center">
                                                         Bỏ qua
                                                     </span>
                                                 </div>
 
-                                                <div class="w-50 mx-auto d-flex justify-content-center my-2">
+                                                <div class="d-flex justify-content-center">
                                                     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">
                                                     </div>
                                                 </div>
 
-                                                <div class="d-flex justify-content-center flex-column my-2">
-                                                    <div id="my-signin2"></div>
-                                                </div>
-
                                                 <p class="text-center">
-                                                    <small>
-                                                        <a data-bs-toggle="list" href="#signin-form" role="tab"
-                                                            aria-controls="profile">Đăng ký
-                                                        </a>
+                                                    <small class="list-group">
+                                                        <a class="adcent-border mx-2 fw-bold">Đăng kí</a>
                                                         nếu chưa bạn chưa
                                                         có tài khoản
                                                     </small>
@@ -520,32 +221,31 @@
                                                 <input type="text" placeholder="Email" name="email"
                                                     class="px-3 py-1 form-control text-success">
                                             </div>
-                                            <div class="sm:w-1/2 px-3 mt-3 col-12">
+                                            <div class=" px-3 mt-3 col-12">
                                                 <input type="text" placeholder="Password" name="password"
                                                     class="px-3 py-1  form-control text-success">
                                             </div>
-                                            <div class="sm:w-1/2 px-3 mt-3 col-12 text-right">
+                                            <div class=" px-3 mt-3 col-12 text-right">
                                                 <input type="text" placeholder="Retype Password" name="retype"
                                                     class="px-3 py-1  form-control text-success">
                                             </div>
 
-                                            <p class="text-center">
-                                                <button class="btn adcent-bg-color text-white px-3 py-2 text-center">
+                                            <div class="text-center my-3">
+                                                <button class="btn adcent-bg-color text-white px-4 py-2 text-center">
                                                     Đăng kí
                                                 </button>
-                                            </p>
+                                            </div>
 
-                                            <div data-bs-toggle="collapse" data-bs-target="#login-form-container"
-                                                class="mx-2 text-center my-2" aria-controls="category"
-                                                aria-expanded="false" aria-label="Toggle navigation">
-                                                <span class="adcent-button  px-3 rounded py-2">
+                                            <div class="text-center my-3" onclick="deDisplay('login-form-container')">
+                                                <span class="adcent-button px-4 rounded py-2 text-center">
                                                     Bỏ qua
                                                 </span>
                                             </div>
-                                            <div class="w-50 mx-auto d-flex justify-content-center my-2">
+                                            <div class="d-flex justify-content-center">
                                                 <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">
                                                 </div>
                                             </div>
+
                                             <p class="text-center small mx-2">
                                                 Bằng việc đăng kí bạn đã
                                                 đồng ý <br>với các điều khoản bảo mật của chúng tôi</p>
@@ -556,36 +256,42 @@
                         </div>
                     </div>
 
-
                     {{#if logedIn}}
-                    <span data-bs-toggle="collapse" data-bs-target="#customer-info"
-                        class="mx-2 adcent-bg-color text-white px-3 rounded py-2 position-relative"
-                        aria-controls="customer-info" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="position-relative p-2 me-2">
-                            <a href="/checkout/cart" class="text-center">
-                                <i class="fas fa-cart-plus fa-lg text-white"></i>
-                            </a>
-                            <div class="position-absolute" style="right: 7%; top:-10%;">
-                                {{number}}
-                            </div>
+                    <span class="dropdown">
+                        <span class="mx-2 adcent-bg-color text-white px-3 rounded py-2 position-relative"
+                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="position-relative p-2 me-2">
+                                <a href="/checkout/cart" class="text-center">
+                                    <i class="fas fa-cart-plus fa-lg text-white"></i>
+                                </a>
+                                <div class="position-absolute" style="right: 7%; top:-10%;">
+                                    {{number}}
+                                </div>
+                            </span>
+                            <span>{{username}}</span>
                         </span>
-                        <span>{{username}}</span>
-                        <div class="collapse position-absolute end-0 top-100 home-bg-color rounded p-3"
-                            aria-labelledby="dropdownMenuLink" id="customer-info" style="z-index: 200;">
-                            <div class="bg-white text-center"><a class="" href="./setup/edit">Cập nhật
-                                    thông tin</a>
-                            </div>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <div class="bg-white text-center"><a class="" href="./setup/edit">Cập nhật
+                                        thông tin</a>
+                                </div>
+                            </li>
                             <hr>
-                            <div class="bg-white text-center"><a class="" href="/order">Lịch sử mua
-                                    hàng</a>
-                            </div>
+                            <li>
+                                <div class="bg-white text-center"><a class="" href="/order">Lịch sử mua
+                                        hàng</a>
+                                </div>
+                            </li>
                             <hr>
-                            <div class="text-center fw-bolder bg-white">
-                                <button class="dropdown-item" type="button" form="form-logout"
-                                    onclick="logOutFunc()">Log
-                                    Out <i class="fas fa-sign-out-alt"></i></button>
-                            </div>
-                            </ul>
+                            <li>
+                                <div class="text-center fw-bolder bg-white">
+                                    <button class="dropdown-item" type="button" form="form-logout"
+                                        onclick="logOutFunc()">Log
+                                        Out <i class="fas fa-sign-out-alt"></i></button>
+                                </div>
+                            </li>
+                        </ul>
                     </span>
                     {{/if}}
                 </div>
