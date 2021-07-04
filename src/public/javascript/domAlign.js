@@ -1,42 +1,3 @@
-/*
-{
-    let coVN = document.getElementById('co-VN');
-    let coAnh = document.getElementById("co-Anh");
-    let tiengAnh = document.getElementById('tieng-Anh');
-    let tiengViet = document.getElementById('tieng-Viet');
-    tiengAnh.addEventListener('click', function () {
-        coAnh.style.display = "inline";
-        coVN.style.display = 'none';
-    })
-
-    tiengViet.addEventListener('click', function () {
-        coAnh.style.display = "none";
-        coVN.style.display = 'inline';
-    })
-
-    function cancelFunc() {
-        let login = document.getElementById("login-area");
-        login.style.display = 'none';
-    }
-
-    function cancelFunc1() {
-        let login = document.getElementById("login-area-1");
-        login.style.display = 'none';
-    }
-
-    let login = document.getElementById("log-in");
-    login.addEventListener('click', function () {
-        let login1 = document.getElementById("login-area");
-        login1.style.display = 'block';
-    })
-
-    let login2 = document.getElementById("log-in-1");
-    login2.addEventListener('click', function () {
-        let login3 = document.getElementById("login-area-1");
-        login3.style.display = 'block';
-    })
-}
-*/
 $(document).ready(function () {
     $('.star').each(function () {
         let code = starDisplayGenerator($(this).val());
@@ -59,6 +20,11 @@ function starDisplayGenerator(number) {
     return code;
 }
 
+//star rating library
+
+
+
+
 
 function toTop() {
     window.scrollTo(pageXOffset, 0);
@@ -68,34 +34,57 @@ $(document).scroll(function () {
     var y = $(this).scrollTop();
     $('.hook-effect').each(function () {
         var t = $(this).offset().top;
-        if (y > t-800) {
-            $(this).animate({top: '0px'})
+        if (y > t - 800) {
+            $(this).animate({
+                top: '0px'
+            })
         }
     })
 
     $('.offset-text').each(function () {
         var t = $(this).parent().offset().top;
-        if (y > t-400) {
+        if (y > t - 400) {
             $(this).fadeIn();
-            $(this).animate({left: '0px',opacity: '1'},'slow')
+            $(this).animate({
+                left: '0px',
+                opacity: '1'
+            }, 'slow')
         }
     });
     $('.offset-image').each(function () {
         var t = $(this).parent().offset().top;
-        if (y > t-400) {
+        if (y > t - 400) {
             $(this).fadeIn();
-            $(this).animate({right: '0px', opacity: '1'},'slow')   
+            $(this).animate({
+                right: '0px',
+                opacity: '1'
+            }, 'slow')
         }
     });
     $('#block-2 .row-image-1').each(function () {
         var t = $(this).parent().offset().top;
-        if (y > t-400) {
+        if (y > t - 400) {
             $(this).fadeIn();
-            $(this).animate({left: '0px', opacity: '1'},'slow')   
+            $(this).animate({
+                left: '0px',
+                opacity: '1'
+            }, 'slow')
         }
     });
 });
 
+function scrollToElement(name) {
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $(`#${name}`).offset().top - 200
+    }, 'fast');
+}
 
 
 
+function display(name) {
+    $(`#${name}`).fadeIn();
+}
+
+function deDisplay(name) {
+    $(`#${name}`).fadeOut();
+}

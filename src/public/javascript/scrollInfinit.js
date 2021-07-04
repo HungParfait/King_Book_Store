@@ -1,5 +1,3 @@
-let index = -1;
-
 function starDisplayGenerator(number) {
     let code = '';
     number = +number;
@@ -14,18 +12,14 @@ function starDisplayGenerator(number) {
     }
     return code;
 }
+
+
 let x = document.getElementById('spinner');
 
 function myScroll() {
-    x.classList.add('d-none');
-    if (index > 6) return;
-    x.classList.remove('d-none');
-    let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
-
-    // if the user hasn't scrolled far enough (>100px to the end)
-    if (windowRelativeBottom < document.documentElement.clientHeight + 350) {
-        index++;
-
+    let index = 0;
+    while (index < 9) {
+        x.classList.remove('d-none');
         axios({
                 method: 'post',
                 url: '/infinite/scroll',
@@ -43,10 +37,9 @@ function myScroll() {
                     $(this).parent().html(code);
                 })
             })
-    } else {
-        return;
+            x.classList.add('d-none');
+            index++;
     }
-
 }
 
-window.addEventListener('scroll', myScroll);
+window.addEventListener('load', myScroll);

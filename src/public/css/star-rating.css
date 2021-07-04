@@ -1,0 +1,31 @@
+.empty-star {
+    font-size: 20px;
+    color: gray;
+}
+
+.rated-star {
+    font-size: 20px;
+    color: #011589;
+}
+
+.rated-star-container {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.star-rating-container {
+    display: inline-block;
+    position: relative;
+}
+
+.star-rating {
+    visibility: hidden;
+}
+
+.star-number {
+    font-weight: bold;
+}

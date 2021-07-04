@@ -1,8 +1,13 @@
 function getPagination(pageNumber) {
-    let url = new URLSearchParams(window.location.search);
-    let query = url.get('q');
-    window.scrollTo(pageXOffset, 50);
-    window.location.href(`url`);
+    const params = new URLSearchParams(location.search);
+    let query = params.get('q')
+    let page = params.get('p');
+    if(query) {
+        window.location.replace(`${location.pathname}?q=${query}&p=${pageNumber}`)
+    }
+    else {
+        window.location.replace(`${location.pathname}?p=${pageNumber}`);
+    }
 }
 
 
@@ -15,7 +20,6 @@ function numberPagination() {
                     q: query,
                     limit: 0,
                     page: 1
-
                 }
             })
             .then(function (response) {
