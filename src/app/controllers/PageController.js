@@ -10,7 +10,7 @@ class SiteController {
 
       names = names.map(name => name.toObject());
 
-      if (!err) res.json( {names} );
+      if (!err) res.render('category', {names, layout: false} );
     })
 }
 }

@@ -41,15 +41,16 @@ module.exports.path = function (req, res) {
 }
 
 
-module.exports.add = function (req, res) {
+module.exports.add = async function (req, res) {
   const query = req.body;
+  const response = await Book.findById(query.id);
   Cart.findOne({ userId: req.user }, async function (err, cart) {
     if (!err) {
       if (cart) {
         for (let i = 0; i < cart.products.length; i++) {
           if (query.id === cart.products[i].productId) {
             cart.products[i].quantity += +query.quantity;
-            cart.price += (query.price * +query.quantity);
+            cart.price += (response.price * +query.quantity);
             cart.price = +cart.price.toFixed(2);
             await cart.save();
             res.status('200').send('Đã thêm vào giỏ hàng');
@@ -58,20 +59,20 @@ module.exports.add = function (req, res) {
         }
         cart.products.push({
           quantity: +query.quantity,
-          price: +query.price,
+          price: +response.price,
           productId: query.id
         })
-        cart.price = +((cart.price + (+query.price * +query.quantity)).toFixed(2));
+        cart.price = +((cart.price + (+response.price * +query.quantity)).toFixed(2));
         await cart.save();
         res.status('200').send('Đã thêm vào giỏ hàng');
       }
       else {
         const newCart = new Cart({
           userId: req.user,
-          price: (query.price * +query.quantity),
+          price: (response.price * +query.quantity),
           products: [{
             quantity: +query.quantity,
-            price: +query.price,
+            price: +response.price,
             productId: query.id
           }],
         })
