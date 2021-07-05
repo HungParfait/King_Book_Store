@@ -4,7 +4,10 @@ let select = document.querySelectorAll("input[type='checkbox']");
 let count = select.length - 1;
 
 if (count === 0) {
-    document.getElementById('pay-button').disabled = true;
+    document.querySelectorAll('.pay-button').forEach(() => {
+        disabled = true;
+    }
+    )
 }
 
 function checkedChange() {
@@ -16,7 +19,10 @@ function checkedChange() {
         select[i].checked = selectAll.checked;
         count = selectAll.checked ? select.length - 1 : 0;
         if (count === 0) {
-            document.getElementById('pay-button').disabled = true;
+            document.querySelectorAll('.pay-button').forEach(() => {
+                disabled = true;
+            }
+            )
         }
 
     }
@@ -34,7 +40,10 @@ function checkedChange() {
         }
         amount1.innerHTML = am1.toFixed(2);
         amount2.innerHTML = (am1 * tax).toFixed(2);
-        document.getElementById('pay-button').disabled = false;
+        document.querySelectorAll('.pay-button').forEach(() => {
+            disabled = false;
+        }
+        )
     }
 }
 
@@ -44,7 +53,9 @@ function toAction() {
     if (count === select.length - 1) {
         selectAll.checked = true;
     }
-    document.getElementById('pay-button').disabled = false;
+    document.querySelectorAll('.pay-button').forEach(() => {
+        disabled = false;
+    });
 }
 for (var i = 1; i < select.length; i++) {
     select[i].onchange = (event) => {
@@ -57,7 +68,9 @@ for (var i = 1; i < select.length; i++) {
             count--;
             unCheckedEle.style.color = 'rgb(0,0,0,0.2)';
             if (count === 0) {
-                document.getElementById('pay-button').disabled = true;
+                document.querySelectorAll('.pay-button').forEach(() => {
+                    disabled = true;
+                })
             }
             amount1.innerHTML = (+amount1.innerHTML - +unCheckedEle.innerHTML).toFixed(2);
             amount2.innerHTML = (+amount1.innerHTML * tax).toFixed(2)
