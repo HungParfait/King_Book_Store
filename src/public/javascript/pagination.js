@@ -14,21 +14,22 @@ function getPagination(pageNumber) {
 function numberPagination() {
     let url = new URLSearchParams(window.location.search);
     let query = url.get('q')
+    let page = +url.get('p');
     if (query !== null) {
         axios.post('/search/result/page', {
                 params: {
                     q: query,
-                    limit: 0,
-                    page: 1
+                    p: 1
                 }
             })
             .then(function (response) {
+                console.log(response.data)
                 let numberPage;
                 numberPage = Math.floor(response.data.names.length / 16) + 1;
                 init({
                     size: numberPage,
                     step: 3,
-                    page: 1
+                    page: page||1
                 });
             })
             .catch(function (error) {
@@ -49,7 +50,7 @@ function numberPagination() {
                 init({
                     size: numberPage,
                     step: 3,
-                    page: 1
+                    page: page||1
                 });
             })
             .catch(function (error) {
