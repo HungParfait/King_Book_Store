@@ -3,13 +3,8 @@ const User = require('../models/users');
 
 class SiteController {
   index(req, res) {
-    Book.distinct('category', async function (err, book) {
-      if (!err) {
-        res.render('home', {book})
-        };
-
-});
-
-  }
+        res.render('home')
+};
 }
+
 module.exports = new SiteController();
