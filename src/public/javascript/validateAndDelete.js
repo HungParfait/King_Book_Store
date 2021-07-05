@@ -4,25 +4,23 @@ let select = document.querySelectorAll("input[type='checkbox']");
 let count = select.length - 1;
 
 if (count === 0) {
-    document.querySelectorAll('.pay-button').forEach(() => {
-        disabled = true;
-    }
-    )
+    document.querySelectorAll('.pay-button').forEach(ele => {
+        ele.disabled = true;
+    })
 }
 
 function checkedChange() {
-    let amount1 = document.querySelector(`#amount-1`);
-    let amount2 = document.querySelector(`#amount-2`);
+    let amount1 = document.querySelectorAll(`.amount-1`);
+    let amount2 = document.querySelectorAll(`.amount-2`);
     let x = document.querySelectorAll('[id ^= "price-"]')
     let am1 = 0
     for (var i = 1; i < select.length; i++) {
         select[i].checked = selectAll.checked;
         count = selectAll.checked ? select.length - 1 : 0;
         if (count === 0) {
-            document.querySelectorAll('.pay-button').forEach(() => {
-                disabled = true;
-            }
-            )
+            document.querySelectorAll('.pay-button').forEach(ele => {
+                ele.disabled = true;
+            })
         }
 
     }
@@ -30,20 +28,27 @@ function checkedChange() {
         for (var j = 0; j < x.length; j++) {
             x[j].style.color = 'rgb(0,0,0,0.2)';
         }
-        amount1.innerHTML = 0;
-        amount2.innerHTML = 0
-    }
-    else {
+        amount1.forEach(ele => {
+            ele.innerHTML = 0;
+        })
+        amount2.forEach(ele => {
+            ele.innerHTML = 0;
+        })
+    } else {
         for (var j = 0; j < x.length; j++) {
             x[j].style.color = 'rgb(0,0,0)';
             am1 += +x[j].innerHTML
         }
-        amount1.innerHTML = am1.toFixed(2);
-        amount2.innerHTML = (am1 * tax).toFixed(2);
-        document.querySelectorAll('.pay-button').forEach(() => {
-            disabled = false;
-        }
-        )
+        
+        amount1.forEach(ele => {
+            ele.innerHTML = am1.toFixed(2);
+        })
+        amount2.forEach(ele => {
+            ele.innerHTML = (am1 * tax).toFixed(2);
+        })
+        document.querySelectorAll('.pay-button').forEach(ele => {
+            ele.disabled = false;
+        })
     }
 }
 
@@ -53,33 +58,42 @@ function toAction() {
     if (count === select.length - 1) {
         selectAll.checked = true;
     }
-    document.querySelectorAll('.pay-button').forEach(() => {
-        disabled = false;
+    document.querySelectorAll('.pay-button').forEach(ele => {
+        ele.disabled = false;
     });
 }
 for (var i = 1; i < select.length; i++) {
     select[i].onchange = (event) => {
         let unCheckedId = event.currentTarget.id;
         let unCheckedEle = document.querySelector(`#price-${unCheckedId}`);
-        let amount1 = document.querySelector(`#amount-1`);
-        let amount2 = document.querySelector(`#amount-2`);
+        let amount1 = document.querySelectorAll(`.amount-1`);
+        let amount2 = document.querySelectorAll(`.amount-2`);
         if (!(event.currentTarget.checked)) {
             selectAll.checked = false;
             count--;
             unCheckedEle.style.color = 'rgb(0,0,0,0.2)';
             if (count === 0) {
-                document.querySelectorAll('.pay-button').forEach(() => {
-                    disabled = true;
+                document.querySelectorAll('.pay-button').forEach(ele => {
+                    ele.disabled = true;
                 })
             }
-            amount1.innerHTML = (+amount1.innerHTML - +unCheckedEle.innerHTML).toFixed(2);
-            amount2.innerHTML = (+amount1.innerHTML * tax).toFixed(2)
-        }
-        else {
+
+            amount1.forEach(ele => {
+                ele.innerHTML = (+ele.innerHTML - +unCheckedEle.innerHTML).toFixed(2);
+            })
+
+            amount2.forEach(ele => {
+                ele.innerHTML = (+amount1[0].innerHTML * tax).toFixed(2)
+            })
+        } else {
             toAction();
             unCheckedEle.style.color = 'rgb(0,0,0)';
-            amount1.innerHTML = (+amount1.innerHTML + +unCheckedEle.innerHTML).toFixed(2);
-            amount2.innerHTML = (+amount1.innerHTML * tax).toFixed(2)
+            amount1.forEach(ele => {
+                ele.innerHTML = (+ele.innerHTML + +unCheckedEle.innerHTML).toFixed(2);
+            })
+            amount2.forEach(ele => {
+                ele.innerHTML = (+amount1[0].innerHTML * tax).toFixed(2)
+            })
         }
     }
 }
@@ -89,13 +103,10 @@ async function changeQty(value, event) {
     let toChecked = document.getElementById(id);
     if (+value > 0 && +value <= 99) {
         //id sách, id khách hàng, , số lượng
-        let unCheckedEle = document.getElementById(`price-${id}`);
-        unCheckedEle.style.color = 'rgb(0,0,0)';
         let quantity1 = document.querySelector(`#noti-spinner-${id}`);
         let price = document.querySelector(`#price-${id}`);
-        let amount1 = document.querySelector(`#amount-1`);
-        let amount2 = document.querySelector(`#amount-2`);
-        price.classList.remove('d-block');
+        let amount1 = document.querySelectorAll(`.amount-1`);
+        let amount2 = document.querySelectorAll(`.amount-2`);
         price.classList.add('d-none');
         quantity1.classList.remove('d-none');
         quantity1.classList.add('d-block');
@@ -109,20 +120,24 @@ async function changeQty(value, event) {
         });
         //response: giá, số lượng
         if (toChecked.checked) {
-            amount1.innerHTML = (+amount1.innerHTML - +price.innerHTML).toFixed(2);
+            amount1.forEach(ele => {
+                ele.innerHTML = (+ele.innerHTML - +price.innerHTML).toFixed(2);
+            })
             price.innerHTML = response.data.price;
-            amount1.innerHTML = (+amount1.innerHTML + +response.data.price).toFixed(2);
-            amount2.innerHTML = (+amount1.innerHTML * tax).toFixed(2);
-        }
-        else {
+            amount1.forEach(ele => {
+                ele.innerHTML = (+ele.innerHTML + +response.data.price).toFixed(2);
+            })
+            amount2.forEach(ele => {
+                ele.innerHTML = (+amount1[0].innerHTML * tax).toFixed(2);
+            })
+        } else {
             price.innerHTML = response.data.price;
         }
         quantity1.classList.remove('d-block');
         quantity1.classList.add('d-none');
         price.classList.remove('d-none');
-        price.classList.add('d-block');
-    }
-    else {
+        price.classList.add('d-inline');
+    } else {
         let quantity = document.querySelector(`#noti-quantity`);
         quantity.classList.remove('d-none');
         quantity.classList.add('d-block');
@@ -148,15 +163,13 @@ function checkChangeQty(event, name) {
                 quantity1.classList.add('d-none');
             }, 3000)
         };
-    }
-    else {
+    } else {
         var x = event.which || event.keyCode;
         let input = document.querySelector(`#${name}`);
         let isNotNumber = reg.test(String.fromCharCode(x));
         if (isNotNumber) {
             event.preventDefault();
-        }
-        else {
+        } else {
             let Qty = parseInt(input.value + String.fromCharCode(x));
             if (Qty <= 0 || Qty > 99) {
                 event.preventDefault();
@@ -175,8 +188,8 @@ function checkChangeQty(event, name) {
 async function submitFunc(id) {
     let bookId = id.replace('submit-', '')
     let delete1 = document.querySelector(`#noti-spinner-${bookId}`);
-    let amount1 = document.querySelector(`#amount-1`);
-    let amount2 = document.querySelector(`#amount-2`);
+    let amount1 = document.querySelectorAll(`.amount-1`);
+    let amount2 = document.querySelectorAll(`.amount-2`);
     delete1.classList.remove('d-none');
     delete1.classList.add('d-block');
     let response = await axios({
@@ -191,19 +204,26 @@ async function submitFunc(id) {
         select = document.querySelectorAll("input[type='checkbox']");
         count = select.length - 1;
         if (count === 0) {
-            document.getElementById('pay-button').disabled = true;
+            document.querySelectorAll('.pay-button').forEach(ele => {
+                ele.disabled = true;
+            });
         }
-        amount1.innerHTML = response.data.money;
-        amount2.innerHTML = (response.data.money * tax).toFixed(2);
-        let deleEle = document.getElementById(`tr-${bookId}`);
+        amount1.forEach(ele => {
+            ele.innerHTML = response.data.money;
+        })
+        amount2.forEach(ele => {
+            ele.innerHTML = (response.data.money * tax).toFixed(2);
+        })
+        let deleEle = document.getElementById(`products-${bookId}`);
         deleEle.remove();
         select = document.querySelectorAll("input[type='checkbox']");
         count = select.length - 1;
         if (count === 0) {
-            document.getElementById('pay-button').disabled = true;
+            document.querySelectorAll('.pay-button').forEach(ele => {
+                ele.disabled = true;
+            });
         }
-    }
-    else {
+    } else {
         alert('Something went wrong')
     }
 }
@@ -217,8 +237,8 @@ async function subtractProds(id, event) {
         toTested.value = +toTested.value - 1
         let quantity1 = document.querySelector(`#noti-spinner-${id}`);
         let price = document.querySelector(`#price-${id}`);
-        let amount1 = document.querySelector(`#amount-1`);
-        let amount2 = document.querySelector(`#amount-2`);
+        let amount1 = document.querySelectorAll(`.amount-1`);
+        let amount2 = document.querySelectorAll(`.amount-2`);
         price.classList.remove('d-block');
         price.classList.add('d-none');
         quantity1.classList.remove('d-none');
@@ -233,20 +253,24 @@ async function subtractProds(id, event) {
         });
 
         if (toChecked.checked) {
-            amount1.innerHTML = (+amount1.innerHTML - +price.innerHTML).toFixed(2);
+            amount1.forEach(ele => {
+                ele.innerHTML = (+ele.innerHTML - +price.innerHTML).toFixed(2);
+            })
             price.innerHTML = response.data.price;
-            amount1.innerHTML = (+amount1.innerHTML + +response.data.price).toFixed(2);
-            amount2.innerHTML = (+amount1.innerHTML * tax).toFixed(2);
-        }
-        else {
+            amount1.forEach(ele => {
+                ele.innerHTML = (+ele.innerHTML + +response.data.price).toFixed(2);
+            })
+            amount2.forEach(ele => {
+                ele.innerHTML = (+amount1[0].innerHTML * tax).toFixed(2);
+            })
+        } else {
             price.innerHTML = response.data.price;
         }
         quantity1.classList.remove('d-block');
         quantity1.classList.add('d-none');
         price.classList.remove('d-none');
-        price.classList.add('d-block');
-    }
-    else {
+        price.classList.add('d-inline');
+    } else {
         let quantity = document.querySelector(`#noti-quantity`);
         quantity.classList.remove('d-none');
         quantity.classList.add('d-block');
@@ -270,8 +294,8 @@ async function addProds(id, event) {
         toTested.value = +toTested.value + 1
         let quantity1 = document.querySelector(`#noti-spinner-${id}`);
         let price = document.querySelector(`#price-${id}`);
-        let amount1 = document.querySelector(`#amount-1`);
-        let amount2 = document.querySelector(`#amount-2`);
+        let amount1 = document.querySelectorAll(`.amount-1`);
+        let amount2 = document.querySelectorAll(`.amount-2`);
         price.classList.remove('d-block');
         price.classList.add('d-none');
         quantity1.classList.remove('d-none');
@@ -286,21 +310,25 @@ async function addProds(id, event) {
         });
 
         if (toChecked.checked) {
-            amount1.innerHTML = (+amount1.innerHTML - +price.innerHTML).toFixed(2);
+            amount1.forEach(ele => {
+                ele.innerHTML = (+ele.innerHTML - +price.innerHTML).toFixed(2);
+            })
             price.innerHTML = response.data.price;
-            amount1.innerHTML = (+amount1.innerHTML + +response.data.price).toFixed(2);
-            amount2.innerHTML = (+amount1.innerHTML * tax).toFixed(2);
-        }
-        else {
+            amount1.forEach(ele => {
+                ele.innerHTML = (+ele.innerHTML + +response.data.price).toFixed(2);
+            })
+            amount2.forEach(ele => {
+                ele.innerHTML = (+amount1[0].innerHTML * tax).toFixed(2);
+            })
+        } else {
             price.innerHTML = response.data.price;
         }
 
         quantity1.classList.remove('d-block');
         quantity1.classList.add('d-none');
         price.classList.remove('d-none');
-        price.classList.add('d-block');
-    }
-    else {
+        price.classList.add('d-inline');
+    } else {
         let quantity = document.querySelector(`#noti-quantity`);
         quantity.classList.remove('d-none');
         quantity.classList.add('d-block');
@@ -323,8 +351,3 @@ window.onscroll = () => {
     element.style.top = `${value}px`;
 }
 */
-
-
-
-
-

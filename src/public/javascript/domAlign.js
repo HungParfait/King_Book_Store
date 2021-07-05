@@ -88,3 +88,15 @@ function display(name) {
 function deDisplay(name) {
     $(`#${name}`).fadeOut();
 }
+
+
+var triggerTabList = [].slice.call(document.querySelectorAll('#list-tab-4 a'))
+triggerTabList.forEach(function (triggerEl) {
+  var tabTrigger = new bootstrap.Tab(triggerEl)
+
+  
+  triggerEl.addEventListener('click', function (event) {
+    event.preventDefault()
+    tabTrigger.show()
+  })
+})
