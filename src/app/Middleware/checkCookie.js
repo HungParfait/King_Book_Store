@@ -1,7 +1,7 @@
 const User = require('../models/users');
 const jwt = require("jsonwebtoken")
 const Cart =  require('../models/cart');
-
+const Book = require('../models/books');
 module.exports.check = async function (req, res, next) {
     try {
         const token = req.cookies.c_user;
@@ -36,6 +36,11 @@ module.exports.check = async function (req, res, next) {
 
 module.exports.checkDisplay = async function (req, res, next) {
     try {
+        Book.distinct('category', function (err, book) {
+            if (!err) {
+              res.locals.book = book;
+              };
+      });
         const token = req.cookies.c_user;
         let decodedData;
         if (token) {
