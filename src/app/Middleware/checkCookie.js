@@ -1,6 +1,6 @@
 const User = require('../models/users');
 const jwt = require("jsonwebtoken")
-const Cart =  require('../models/cart');
+const Cart = require('../models/cart');
 const Book = require('../models/books');
 module.exports.check = async function (req, res, next) {
     try {
@@ -10,23 +10,22 @@ module.exports.check = async function (req, res, next) {
             try {
                 decodedData = jwt.verify(token, 'duchung-email');
                 if (decodedData) {
-                    const user = await User.findById(decodedData?._id);
+                    const user = await User.findById(decodedData ?._id);
                     if (user) {
                         req.user = user._id;
                         next();
-                    }
-                    else {
-                        req.user = decodedData?._id;
+                    } else {
+                        req.user = decodedData ?._id;
                         next();
                     }
                 }
-            }
-            catch (err) {
-                res.clearCookie('c_user', { path: '/login' });
+            } catch (err) {
+                res.clearCookie('c_user', {
+                    path: '/login'
+                });
                 res.send('Hết phiên. Bạn cần đăng nhập lại')
             }
-        }
-        else {
+        } else {
             res.send('Bạn cần đăng nhập')
         }
     } catch (error) {
@@ -36,41 +35,37 @@ module.exports.check = async function (req, res, next) {
 
 module.exports.checkDisplay = async function (req, res, next) {
     try {
-        Book.distinct('category', function (err, book) {
-            if (!err) {
-              res.locals.book = book;
-              };
-      });
+        let book = await Book.distinct('category')
+        res.locals.book = book;
         const token = req.cookies.c_user;
         let decodedData;
         if (token) {
             try {
                 decodedData = jwt.verify(token, 'duchung-email');
                 if (decodedData) {
-                    const user = await User.findById(decodedData?._id);
-                    const cart = await Cart.findOne({userId: decodedData?._id});
+                    const user = await User.findById(decodedData ?._id);
+                    const cart = await Cart.findOne({
+                        userId: decodedData ?._id
+                    });
                     res.locals.logedIn = true;
-                    res.locals.number = cart?.products?.length;
+                    res.locals.number = cart ?.products?.length;
                     if (user) {
-                        await User.findById(decodedData?._id);
-                        if(user.user_name) {
+                        await User.findById(decodedData ?._id);
+                        if (user.user_name) {
                             res.locals.username = user.user_name;
-                        }
-                        else {
+                        } else {
                             res.locals.username = 'No user name';
                         }
                         next();
-                    }
-                    else {
-                        res.locals.username = decodedData?.username;
+                    } else {
+                        res.locals.username = decodedData ?.username;
                         next();
                     }
                 }
-            }
-            catch (err) {
+            } catch (err) {
                 next();
             }
-        }
+        } 
         else {
             next();
         }
