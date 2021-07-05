@@ -1,0 +1,397 @@
+<div class="bg-white px-3 py-2 d-md-none d-block" id="mobile-header">
+    <div class="d-flex align-items-center justify-content-between bg-white">
+        <a class="w-50" href="/home">
+            <img id="brand-img-small" class="img-fluid" src="./image/logo.png" alt="web-logo">
+        </a>
+        <p data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" class="my-0"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars fa-lg adcent-color"></i>
+        </p>
+    </div>
+    <div class="collapse" id="navbarTogglerDemo02">
+        <hr>
+        <div class="">
+            <div class="">
+                <p data-bs-toggle="collapse" data-bs-target="#category-1" class="text-center" aria-controls="category-1"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    Category
+                </p>
+                <div class="collapse" id="category-1">
+                    {{#each book}}
+                    <div class="">
+                        <a href="/category/{{this}}" class="tag-left">
+                            <p class="my-0">{{this}}</p>
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item text-center">
+                    <a class="nav-link active" aria-current="page" href="">Shop now</a>
+                </li>
+                <li class="nav-item text-center">
+                    <a class="nav-link" href="/checkout/cart">To Cart</a>
+                </li>
+            </ul>
+
+            {{#unless logedIn}}
+            <div class="my-2">
+                <p data-bs-toggle="collapse" data-bs-target="#sign-in-mobile" class="text-center"
+                    aria-controls="sign-in-mobile" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="adcent-bg-color text-white px-3 rounded py-2 adcent-border-color">
+                        Sign In
+                    </span>
+                </p>
+                <div class="collapse" id="sign-in-mobile">
+                    <hr>
+                    <form action="/login/email" method="post">
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="name@example.com" name="email">
+                        </div>
+                        <div class="">
+                            <input type="password" class="form-control" placeholder="Password" name="password">
+                        </div>
+                        <p class="text-center">
+                            <button class="btn adcent-bg-color text-white px-3 py-2 text-center my-2">
+                                Sign in
+                            </button>
+                        </p>
+
+                        <div class="d-flex justify-content-center flex-column">
+                            <div id="my-signin2"></div>
+                        </div>
+
+                        <p class="text-center">
+                            <small>
+                                <a href="#" class="">Đăng ký</a> nếu chưa bạn chưa có tài khoản
+                            </small>
+                        </p>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="my-2">
+                <p data-bs-toggle="collapse" data-bs-target="#sign-in-mobile" class="text-center"
+                    aria-controls="sign-in-mobile" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="adcent-bg-color text-white px-3 rounded py-2 adcent-border-color">
+                        Sign Up
+                    </span>
+                </p>
+                <div class="collapse" id="sign-in-mobile">
+                    <hr>
+                    <form method="POST" action="/signup" class="rounded px-5">
+                        <div class="px-3 mt-3 col-12 text-right">
+                            <input type="text" placeholder="Email" name="email" required="required"
+                                class="px-3 py-1 form-control text-success">
+                        </div>
+                        <div class=" px-3 mt-3 col-12">
+                            <input type="text" placeholder="Password" name="password" required="required"
+                                class="px-3 py-1  form-control text-success">
+                        </div>
+                        <div class=" px-3 mt-3 col-12 text-right">
+                            <input type="text" placeholder="Retype Password" name="retype"
+                                class="px-3 py-1  form-control text-success">
+                        </div>
+
+                        <div class="text-center my-3">
+                            <button class="btn adcent-bg-color text-white px-4 py-2 text-center">
+                                Đăng kí
+                            </button>
+                        </div>
+
+                        <div class="text-center my-3" onclick="deDisplay('login-form-container')">
+                            <span class="adcent-button px-4 rounded py-2 text-center">
+                                Bỏ qua
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">
+                            </div>
+                        </div>
+
+                        <p class="text-center small mx-2">
+                            Bằng việc đăng kí bạn đã
+                            đồng ý <br>với các điều khoản bảo mật của chúng tôi</p>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+            {{/unless}}
+
+            {{#if logedIn}}
+            <span data-bs-toggle="collapse" data-bs-target="#customer-info"
+                class="mx-auto d-block adcent-bg-color text-white px-3 rounded py-2 w-75 my-2 text-center"
+                aria-controls="customer-info" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="position-relative p-2 me-2">
+                    <a href="/checkout/cart" class="text-center">
+                        <i class="fas fa-cart-plus fa-lg text-white"></i>
+                    </a>
+                    <div class="position-absolute" style="right: 7%; top:-10%;">
+                        {{number}}
+                    </div>
+                </span>
+                <span>{{username}}</span>
+            </span>
+            <div class="collapse home-bg-color rounded p-3" aria-labelledby="dropdownMenuLink" id="customer-info"
+                style="z-index: 200;">
+                <div class="bg-white text-center"><a class="" href="./setup/edit">Cập nhật
+                        thông tin</a>
+                </div>
+                <hr>
+                <div class="bg-white text-center"><a class="" href="/order">Lịch sử mua
+                        hàng</a>
+                </div>
+                <hr>
+                <div class="text-center fw-bolder bg-white">
+                    <button class="dropdown-item" type="button" form="form-logout" onclick="logOutFunc()">Log
+                        Out <i class="fas fa-sign-out-alt"></i></button>
+                </div>
+            </div>
+            {{/if}}
+
+
+            <form action="/search/result" class="position-relative">
+                <input type="text" name="q" placeholder="Search" class="w-100 rounded py-2">
+                <button type="submit" class="btn position-absolute top-50 end-0" style="transform: translateY(-50%);">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="bg-white d-md-block d-none" id="pc-header">
+    <div class="container-custom">
+        <div class="d-flex px-3 py-3 d-flex justify-content-between align-items-center">
+            <span class="w-25 px-5">
+                <a class='' href='/home'>
+                    <img id="brand-img-small" class="img-fluid" src="./image/logo.png" alt="web-logo">
+                </a>
+            </span>
+            <div class="">
+                <div class="">
+                    <span class='mx-2 adcent-color doi-mau' onclick="scrollToElement('block-2')">
+                        Shop Now
+                    </span>
+                    <a class='mx-2 adcent-color doi-mau' href='/checkout/cart'>
+                        To Cart
+                    </a>
+                    <span data-bs-toggle="collapse" data-bs-target="#pc-search" class="mx-2 doi-mau"
+                        aria-controls="pc-search" aria-expanded="false" aria-label="Toggle navigation">
+                        Search
+                    </span>
+
+                    <span data-bs-toggle="collapse" data-bs-target="#category" class="mx-2 doi-mau"
+                        aria-controls="category" aria-expanded="false" aria-label="Toggle navigation">
+                        Category
+                    </span>
+
+                    {{#unless logedIn}}
+                    <span onclick="display('login-form-container')"
+                        class="mx-2 adcent-bg-color text-white px-3 rounded py-2"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        Sign In
+                    </span>
+                    {{/unless}}
+
+                    <div class="hien-thi" id="login-form-container" style="z-index: 500;">
+                        <div class="bg-white py-5 position-absolute start-50 top-50 rounded"
+                            style="transform: translate(-50%,-50%);">
+                            <div class="">
+                                <div class="list-group list-group-horizontal justify-content-center" id="list-login"
+                                    role="tablist">
+                                    <a class="adcent-border active mx-4 fw-bold" id="login-login" data-bs-toggle="list"
+                                        href="#login-form" role="tab" aria-controls="home">Đăng
+                                        nhập</a>
+                                    <a class="adcent-border mx-4 fw-bold" id="signin-signin" data-bs-toggle="list"
+                                        href="#signin-form" role="tab" aria-controls="profile">Đăng
+                                        kí</a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="">
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active px-5 py-5" id="login-form" role="tabpanel"
+                                        aria-labelledby="list-home-list">
+                                        <form action="/login/email" method="post" class="rounded">
+                                            <div class="rounded">
+                                                <div class="mb-3">
+                                                    <input type="email" class="form-control"
+                                                        placeholder="name@example.com" name="email" required="required">
+                                                </div>
+                                                <div class="">
+                                                    <input type="password" class="form-control" placeholder="Password"
+                                                        required="required" name="password">
+                                                </div>
+                                                <p class="text-center my-3">
+                                                    <button
+                                                        class="btn adcent-bg-color text-white px-4 py-2 text-center">
+                                                        Sign in
+                                                    </button>
+                                                </p>
+
+                                                <div class="text-center mt-3 mb-3"
+                                                    onclick="deDisplay('login-form-container')">
+                                                    <span class="adcent-button px-4 rounded py-2 text-center">
+                                                        Bỏ qua
+                                                    </span>
+                                                </div>
+
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">
+                                                    </div>
+                                                </div>
+
+                                                <p class="text-center">
+                                                    <small class="list-group">
+                                                        <a class="adcent-border mx-2 fw-bold">Đăng kí</a>
+                                                        nếu chưa bạn chưa
+                                                        có tài khoản
+                                                    </small>
+                                                </p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="signin-form" role="tabpanel"
+                                        aria-labelledby="list-profile-list">
+                                        <form method="POST" action="/signup" class="rounded px-5">
+                                            <h1>Sign Up</h1>
+                                            <div class="form-field">
+                                                <label for="email">Email:</label>
+                                                <input type="text" name="email" id="email" autocomplete="off">
+                                                <small></small>
+                                            </div>
+
+                                            <div class="form-field">
+                                                <label for="password">Password:</label>
+                                                <input type="password" name="password" id="password" autocomplete="off">
+                                                <small></small>
+                                            </div>
+
+                                            <div class="form-field">
+                                                <label for="confirm-password">Confirm Password:</label>
+                                                <input type="password" name="confirm-password" id="confirm-password"
+                                                    autocomplete="off">
+                                                <small></small>
+                                            </div>
+
+                                            <div class="text-center my-3">
+                                                <button class="btn adcent-bg-color text-white px-4 py-2 text-center">
+                                                    Đăng kí
+                                                </button>
+                                            </div>
+
+                                            <div class="text-center my-3" onclick="deDisplay('login-form-container')">
+                                                <span class="adcent-button px-4 rounded py-2 text-center">
+                                                    Bỏ qua
+                                                </span>
+                                            </div>
+                                            <div class="d-flex justify-content-center">
+                                                <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">
+                                                </div>
+                                            </div>
+
+                                            <p class="text-center small mx-2">
+                                                Bằng việc đăng kí bạn đã
+                                                đồng ý <br>với các điều khoản bảo mật của chúng tôi</p>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{#if logedIn}}
+                    <span class="dropdown">
+                        <span class="mx-2 adcent-bg-color text-white px-3 rounded py-2 position-relative"
+                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="position-relative p-2 me-2">
+                                <a href="/checkout/cart" class="text-center">
+                                    <i class="fas fa-cart-plus fa-lg text-white"></i>
+                                </a>
+                                <div class="position-absolute" style="right: 7%; top:-10%;">
+                                    {{number}}
+                                </div>
+                            </span>
+                            <span>{{username}}</span>
+                        </span>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <div class="bg-white text-center"><a class="" href="./setup/edit">Cập nhật
+                                        thông tin</a>
+                                </div>
+                            </li>
+                            <hr>
+                            <li>
+                                <div class="bg-white text-center"><a class="" href="/order">Lịch sử mua
+                                        hàng</a>
+                                </div>
+                            </li>
+                            <hr>
+                            <li>
+                                <div class="text-center fw-bolder bg-white">
+                                    <button class="dropdown-item" type="button" form="form-logout"
+                                        onclick="logOutFunc()">Log
+                                        Out <i class="fas fa-sign-out-alt"></i></button>
+                                </div>
+                            </li>
+                        </ul>
+                    </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="collapse home-bg-color" id="category">
+    <div class="container">
+        <div class="d-flex flex-wrap">
+            {{#each book}}
+            <div class="w-25 p-2 ">
+                <a href="/category/{{this}}" class="">
+                    <p class="adcent-color my-0">{{this}}</p>
+                </a>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<div class="collapse home-bg-color" id="pc-search">
+    <form action="/search/result" class="position-relative mx-auto w-50">
+        <input type="text" name="q" placeholder="Search" class="w-100 rounded py-2">
+        <button type="submit" class="btn position-absolute top-50 end-0" style="transform: translateY(-50%);">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+</div>
+
+<script>
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            console.log('User signed out.');
+        });
+    }
+
+    function logOutFunc() {
+        signOut();
+        axios({
+            method: 'POST',
+            url: '/logout',
+            data: {}
+        })
+            .then((response) => {
+                window.location.href = '/home'
+            })
+    }
+</script>
