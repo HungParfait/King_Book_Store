@@ -22,7 +22,7 @@
         <hr>
         <form action="/checkout/cart" method="post" id="form-thanh-toan" class="">
             {{#each ../products }}
-            <div class="">
+            <div id="products-{{this.id}}">
                 <div class="d-flex flex-lg-row flex-column">
                     <div class="form-check my-2 me-lg-2 w-auto">
                         <input class="form-check-input" type="checkbox" value="1" id="{{this.id}}" name="{{this.id}}"
@@ -46,8 +46,12 @@
                                     </p>
                                 </a>
 
-                                <div class="" id="price-{{this.id}}"> <small class="fw-bolder me-3">Thành tiền:</small>
-                                    <small>$</small>{{this.price}}
+                                <div class=""> 
+                                    <small class="fw-bolder me-3">Thành tiền:</small>
+                                    <small>$</small>
+                                    <span id="price-{{this.id}}" class="fw-bold fs-6">
+                                        {{this.price}}
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -81,8 +85,8 @@
                         </div>
                     </div>
                 </div>
+                <hr>
             </div>
-            <hr>
             {{else}}
             <p class="text-center fst-italic mt-4">Giỏ hàng trống</p>
             {{/each}}
@@ -105,17 +109,17 @@
             <div id="thanh-toan" class="home-bg-color p-3 mt-3">
                 <div class="row">
                     <p class="col-6">Thành tiền</p>
-                    <div class="col-6 text-end" id="amount-1">{{this.price}}</div>
+                    <div class="col-6 text-end amount-1">{{this.price}}</div>
                 </div>
                 <hr>
 
                 <div class="row">
                     <p class="col-6 fw-bold">Tổng số tiền (VAT)</p>
-                    <div class="col-6 text-end fw-bold text-warning" id="amount-2">{{this.priceTax}}</div>
+                    <div class="col-6 text-end fw-bold text-warning amount-2">{{this.priceTax}}</div>
                 </div>
 
-                <button type="submit" class="adcent-button py-2 px-4 rounded-pill w-50 mx-auto d-block"
-                    style="font-size: 14px;" form="form-thanh-toan" id='pay-button'>
+                <button type="submit" class="adcent-button py-2 px-4 rounded-pill w-50 mx-auto d-block pay-button"
+                    style="font-size: 14px;" form="form-thanh-toan" >
                     Thanh toán
                 </button>
             </div>
@@ -146,22 +150,15 @@
         </div>
 
         <div class="mx-1" id="total-money">
-            <span class='fs-6'>{{this.priceTax}}</span>
+            <span class='fs-6 amount-2'>{{this.price}}</span>
             <span>$</span>
         </div>
 
-        <button type="submit" class="adcent-bg-color text-white px-3 py-2 rounded" form="form-thanh-toan"
-            id='pay-button'>
+        <button type="submit" class="adcent-bg-color text-white px-3 py-2 rounded pay-button h-auto" form="form-thanh-toan">
             Thanh toán
         </button>
     </div>
 </div>
-
 {{/each}}
-
-
-
-
-
 
 <script type="text/javascript" src="./javascript/validateAndDelete.js" lang="javascript"></script>
