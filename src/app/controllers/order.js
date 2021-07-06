@@ -25,6 +25,7 @@ module.exports.loadHistory = function (req, res) {
                         money: order.orders[i].money, time: order.orders[i].order_at, products
                     })
                 }
+                userOrders = userOrders.reverse();
                 res.render('order', { orders: userOrders });
             }
             else {
