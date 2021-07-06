@@ -39,16 +39,23 @@ function checkedChange() {
             x[j].style.color = 'rgb(0,0,0)';
             am1 += +x[j].innerHTML
         }
-        
+
         amount1.forEach(ele => {
             ele.innerHTML = am1.toFixed(2);
         })
         amount2.forEach(ele => {
             ele.innerHTML = (am1 * tax).toFixed(2);
         })
-        document.querySelectorAll('.pay-button').forEach(ele => {
-            ele.disabled = false;
-        })
+
+        if (count === 0) {
+            document.querySelectorAll('.pay-button').forEach(ele => {
+                ele.disabled = true;
+            })
+        } else {
+            document.querySelectorAll('.pay-button').forEach(ele => {
+                ele.disabled = false;
+            })
+        }
     }
 }
 
