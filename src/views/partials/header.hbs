@@ -12,24 +12,25 @@
         <hr>
         <div class="">
             <div class="">
-                <p data-bs-toggle="collapse" data-bs-target="#category-1" class="text-center" aria-controls="category-1"
+                <p data-bs-toggle="collapse" data-bs-target="#category-1" class="text-center doi-mau" aria-controls="category-1"
                     aria-expanded="false" aria-label="Toggle navigation">
                     Category
                 </p>
                 <div class="collapse" id="category-1">
                     {{#each book}}
                     <div class="">
-                        <a href="/category/{{this}}" class="tag-left">
+                        <a href="/category/{{this}}" class="tag-left doi-mau">
                             <p class="my-0">{{this}}</p>
                             <i class="fas fa-angle-right"></i>
                         </a>
                     </div>
                     {{/each}}
+                    <hr>
                 </div>
             </div>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item text-center">
-                    <a class="nav-link active" onclick="scrollToElement('block-2')">Shop now</a>
+                    <a class="nav-link active" aria-current="page" onclick="scrollToElement('block-2')">Shop now</a>
                 </li>
                 <li class="nav-item text-center">
                     <a class="nav-link" href="/checkout/cart">To Cart</a>
@@ -40,7 +41,7 @@
             <div class="my-2">
                 <p data-bs-toggle="collapse" data-bs-target="#sign-in-mobile" class="text-center"
                     aria-controls="sign-in-mobile" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="adcent-bg-color text-white px-3 rounded py-2 adcent-border-color">
+                    <span class="adcent-bg-color text-white px-3 rounded py-2 adcent-border-color" style="letter-spacing: 1px">
                         Sign In
                     </span>
                 </p>
@@ -48,12 +49,10 @@
                     <hr>
                     <form action="/login/email" method="post">
                         <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="name@example.com" required="required"
-                                name="email">
+                            <input type="email" class="form-control" placeholder="name@example.com" name="email">
                         </div>
                         <div class="">
-                            <input type="password" class="form-control" placeholder="Password" required="required"
-                                name="password">
+                            <input type="password" class="form-control" placeholder="Password" name="password">
                         </div>
                         <p class="text-center">
                             <button class="btn adcent-bg-color text-white px-3 py-2 text-center my-2">
@@ -67,18 +66,18 @@
 
                         <p class="text-center">
                             <small>
-                                <a href="../signup" class="">Đăng ký</a> nếu chưa bạn chưa có tài khoản
+                                <a href="#" class="">Đăng ký</a> nếu chưa bạn chưa có tài khoản
                             </small>
                         </p>
                     </form>
                     <hr>
                 </div>
             </div>
-            
-            <div class="my-3">
+
+            <div class="my-2">
                 <p data-bs-toggle="collapse" data-bs-target="#sign-up-mobile" class="text-center"
                     aria-controls="sign-in-mobile" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="adcent-border-color adcent-color px-3 rounded py-2">
+                    <span class="px-3 rounded py-2 adcent-border-color">
                         Sign Up
                     </span>
                 </p>
@@ -89,12 +88,12 @@
                             <input type="text" placeholder="Email" name="email" required="required"
                                 class="px-3 py-1 form-control text-success">
                         </div>
-                        <div class=" px-3 mt-3 col-12">
+                        <div class="px-3 mt-3 col-12">
                             <input type="text" placeholder="Password" name="password" required="required"
                                 class="px-3 py-1  form-control text-success">
                         </div>
                         <div class=" px-3 mt-3 col-12 text-right">
-                            <input type="text" placeholder="Retype Password" name="retype" required="required"
+                            <input type="text" placeholder="Retype Password" name="retype"
                                 class="px-3 py-1  form-control text-success">
                         </div>
 
@@ -104,15 +103,16 @@
                             </button>
                         </div>
 
-                        <div class="d-flex justify-content-center my-2">
+                        <div class="d-flex justify-content-center">
                             <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">
                             </div>
                         </div>
 
                         <p class="text-center small mx-2">
                             Bằng việc đăng kí bạn đã
-                            đồng ý với các điều khoản bảo mật của chúng tôi</p>
+                            đồng ý <br>với các điều khoản bảo mật của chúng tôi</p>
                     </form>
+                    <hr>
                 </div>
             </div>
             {{/unless}}
@@ -170,31 +170,30 @@
             </span>
             <div class="">
                 <div class="">
-                    <span class='mx-2 adcent-color doi-mau' onclick="scrollToElement('block-2')">
+                    <span class='mx-2 adcent-color doi-mau' onclick="scrollToElement()">
                         Shop Now
                     </span>
                     <a class='mx-2 adcent-color doi-mau' href='/checkout/cart'>
                         To Cart
                     </a>
-                    <span data-bs-toggle="collapse" data-bs-target="#pc-search" class="mx-2 doi-mau" aria-controls="pc-search"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span data-bs-toggle="collapse" data-bs-target="#pc-search" class="mx-2 doi-mau"
+                        aria-controls="pc-search" aria-expanded="false" aria-label="Toggle navigation">
                         Search
                     </span>
-                    <span data-bs-toggle="collapse" data-bs-target="#category" class="mx-2 doi-mau" aria-controls="category"
-                        aria-expanded="false" aria-label="Toggle navigation">
+
+                    <span data-bs-toggle="collapse" data-bs-target="#category" class="mx-2 doi-mau"
+                        aria-controls="category" aria-expanded="false" aria-label="Toggle navigation">
                         Category
                     </span>
 
-
                     {{#unless logedIn}}
                     <span onclick="display('login-form-container')"
-                        class="mx-2 adcent-bg-color text-white px-3 rounded py-2" aria-controls="category"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                        class="mx-2 adcent-bg-color text-white px-3 rounded py-2" aria-expanded="false"
+                        aria-label="Toggle navigation">
                         Sign In
                     </span>
                     {{/unless}}
 
-                    
                     <div class="hien-thi" id="login-form-container" style="z-index: 500;">
                         <div class="bg-white py-4 position-absolute start-50 top-50 rounded"
                             style="transform: translate(-50%,-50%);">
@@ -325,7 +324,6 @@
                         </div>
                     </div>
 
-
                     {{#if logedIn}}
                     <span class="dropdown">
                         <span class="mx-2 adcent-bg-color text-white px-3 rounded py-2 position-relative"
@@ -377,15 +375,15 @@
         <div class="d-flex flex-wrap">
             {{#each book}}
             <div class="w-25 p-2 ">
-                <a href="/category/{{this}}" class="">
-                    <p class="adcent-color my-0 doi-mau">{{this}}</p>
+                <a href="/category/{{this}}" class="doi-mau">
+                    <p class="adcent-color my-0">{{this}}</p>
                 </a>
             </div>
             {{/each}}
         </div>
     </div>
-
 </div>
+
 <div class="collapse home-bg-color" id="pc-search">
     <form action="/search/result" class="position-relative mx-auto w-50">
         <input type="text" name="q" placeholder="Search" class="w-100 rounded py-2">
