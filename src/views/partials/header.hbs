@@ -194,8 +194,9 @@
                     </span>
                     {{/unless}}
 
+                    
                     <div class="hien-thi" id="login-form-container" style="z-index: 500;">
-                        <div class="bg-white py-5 position-absolute start-50 top-50 rounded"
+                        <div class="bg-white py-4 position-absolute start-50 top-50 rounded"
                             style="transform: translate(-50%,-50%);">
                             <div class="">
                                 <div class="list-group list-group-horizontal justify-content-center" id="list-login"
@@ -211,71 +212,98 @@
                             <hr>
                             <div class="">
                                 <div class="tab-content" id="nav-tabContent">
-                                    <div class="tab-pane fade show active px-5 py-5" id="login-form" role="tabpanel"
+                                    <div class="tab-pane fade show active px-5 py-4" id="login-form" role="tabpanel"
                                         aria-labelledby="list-home-list">
                                         <form action="/login/email" method="post" class="rounded">
                                             <div class="rounded">
-                                                <div class="mb-3">
-                                                    <input type="email" class="form-control" required="required"
-                                                        placeholder="name@example.com" name="email">
-                                                </div>
                                                 <div class="">
-                                                    <input type="password" class="form-control" required="required"
-                                                        placeholder="Password" name="password">
-                                                </div>
-                                                <p class="text-center my-3">
-                                                    <button
-                                                        class="btn adcent-bg-color text-white px-4 py-2 text-center">
-                                                        Sign in
-                                                    </button>
-                                                </p>
-
-                                                <div class="text-center mt-3 mb-3"
-                                                    onclick="deDisplay('login-form-container')">
-                                                    <span class="adcent-button px-4 rounded py-2 text-center">
-                                                        Bỏ qua
-                                                    </span>
-                                                </div>
-
-                                                <div class="d-flex justify-content-center">
-                                                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">
+                                                    <div class="mb-3">
+                                                        <div class="my-2">
+                                                            Email
+                                                        </div>
+                                                        <input type="email" class="form-control" width="200px"
+                                                            placeholder="name@example.com" name="email"
+                                                            required="required">
                                                     </div>
-                                                </div>
+                                                    <div class="">
+                                                        <div class="my-2">
+                                                            Password
+                                                        </div>
+                                                        <input type="password" class="form-control" width="200px"
+                                                            placeholder="Password" required="required" name="password">
+                                                    </div>
+                                                    <p class="text-end">
+                                                        <small>
+                                                            Quên mật khẩu?
+                                                        </small>
+                                                    </p>
+                                                    <p class="text-center my-3">
+                                                        <button
+                                                            class="btn adcent-bg-color text-white px-5 py-2 text-cente rounded-pill">
+                                                            Sign in
+                                                        </button>
+                                                    </p>
 
-                                                <p class="text-center">
-                                                    <small class="list-group">
-                                                        <a class="adcent-border mx-2 fw-bold">Đăng kí</a>
-                                                        nếu chưa bạn chưa
-                                                        có tài khoản
-                                                    </small>
-                                                </p>
+                                                    <div class="text-center mt-3 mb-3"
+                                                        onclick="deDisplay('login-form-container')">
+                                                        <span
+                                                            class="adcent-color adcent-border-color px-5 rounded py-2 text-center rounded-pill">
+                                                            Bỏ qua
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="d-flex justify-content-center">
+                                                        <div class="g-signin2" data-onsuccess="onSignIn"
+                                                            data-theme="dark">
+                                                        </div>
+                                                    </div>
+
+                                                    <p class="text-center">
+                                                        <small class="list-group">
+                                                            <a class="adcent-border mx-2 fw-bold">Đăng kí</a>
+                                                            nếu chưa bạn chưa
+                                                            có tài khoản
+                                                        </small>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="tab-pane fade" id="signin-form" role="tabpanel"
+                                    <div class="tab-pane fade px-4 py-4" id="signin-form" role="tabpanel"
                                         aria-labelledby="list-profile-list">
-                                        <form method="POST" action="/signup" class="rounded px-5">
-                                            <div class="px-3 mt-3 col-12 text-right">
+                                        <form method="POST" action="/signup" class="rounded">
+                                            <div class="px-3 text-right">
+                                                <div class="my-2">
+                                                    Email
+                                                </div>
                                                 <input type="text" placeholder="Email" name="email" required="required"
-                                                    class="px-3 py-1 form-control text-success">
+                                                    width="200px" class="px-3 py-1 form-control text-success">
                                             </div>
                                             <div class=" px-3 mt-3 col-12">
-                                                <input type="text" placeholder="Password" name="password" required="required"
-                                                    class="px-3 py-1  form-control text-success">
+                                                <div class="my-2">
+                                                    Password
+                                                </div>
+                                                <input type="text" placeholder="Password" name="password" width="200px"
+                                                    required="required" class="px-3 py-1  form-control text-success">
                                             </div>
                                             <div class=" px-3 mt-3 col-12 text-right">
+                                                <div class="my-2">
+                                                    Retype password
+                                                </div>
                                                 <input type="text" placeholder="Retype Password" name="retype"
-                                                    class="px-3 py-1  form-control text-success">
+                                                    width="200px" class="px-3 py-1  form-control text-success">
                                             </div>
 
                                             <div class="text-center my-3">
-                                                <button class="btn adcent-bg-color text-white px-4 py-2 text-center">
+                                                <button
+                                                    class="btn adcent-bg-color text-white px-5 py-2 text-center rounded-pill">
                                                     Đăng kí
                                                 </button>
                                             </div>
 
                                             <div class="text-center my-3" onclick="deDisplay('login-form-container')">
-                                                <span class="adcent-button px-4 rounded py-2 text-center">
+                                                <span
+                                                    class="adcent-border-color adcent-color px-5 rounded py-2 text-center rounded-pill">
                                                     Bỏ qua
                                                 </span>
                                             </div>
@@ -284,15 +312,19 @@
                                                 </div>
                                             </div>
 
-                                            <p class="text-center small mx-2">
-                                                Bằng việc đăng kí bạn đã
-                                                đồng ý <br>với các điều khoản bảo mật của chúng tôi</p>
+                                            <p class="text-center mx-2">
+                                                <small>
+                                                    Bằng việc đăng kí bạn đã
+                                                    đồng ý <br>với các điều khoản bảo mật của chúng tôi
+                                            </p>
+                                            </small>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
 
                     {{#if logedIn}}
                     <span class="dropdown">
