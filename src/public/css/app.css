@@ -513,6 +513,24 @@ body {
   /* number of lines to show */
 }
 
+.ten-tac-gia, .hinh-thuc {
+  height: auto;
+  margin: 6px 0;
+}
+
+.ten-tac-gia small, .hinh-thuc small {
+  color: gray;
+}
+
+.ten-tac-gia {
+  font-weight: 500;
+}
+
+.ten-sach a {
+  font-weight: 530;
+}
+
+
 .home-bg-color {
   background-color: #fff;
 }
